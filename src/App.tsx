@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import OurTeam from "./pages/OurTeam";
 import NotFound from "./pages/NotFound";
 import GlobalClickSpark from "@/components/GlobalClickSpark";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ const App = () => (
       <Sonner />
       <GlobalClickSpark sparkCount={12} sparkColor="#FBBF24" sparkSize={8} />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/contact" element={<Contact />} />
