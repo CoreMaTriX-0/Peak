@@ -1,24 +1,8 @@
-# Welcome to your Lovable project
+# Peakvisory - Expert Accounting & Financial Services
 
-## Project info
+This is a React + TypeScript + Vite project for Peakvisory, a professional accounting and financial services firm.
 
-**URL**: https://lovable.dev/projects/9a62ed80-75ae-43a7-94d8-c76a056a85ec
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/9a62ed80-75ae-43a7-94d8-c76a056a85ec) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Project Setup
 
 Follow these steps:
 
@@ -62,12 +46,23 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/9a62ed80-75ae-43a7-94d8-c76a056a85ec) and click on Share -> Publish.
+Deploy using Netlify, Vercel, or any static hosting service:
 
-## Can I connect a custom domain to my Lovable project?
+1. Build the project: `npm run build`
+2. Deploy the `dist` folder to your hosting service
 
-Yes, you can!
+### Netlify
+- Connect your repository to Netlify
+- Build command: `npm run build`
+- Publish directory: `dist`
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Vercel
+- Connect your repository to Vercel
+- Build command: `npm run build`
+- Output directory: `dist`
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Custom Domain
+
+You can connect a custom domain through your hosting provider:
+- [Netlify Custom Domains](https://docs.netlify.com/domains-https/custom-domains/)
+- [Vercel Custom Domains](https://vercel.com/docs/concepts/projects/custom-domains)

@@ -169,7 +169,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-8">Our Commitment</h2>
           <p className="text-lg max-w-4xl opacity-90">
-            At Lovable Corp, we pride ourselves on delivering top-tier services. We believe trust takes years to build and only seconds to break, so we strive to exceed your expectations at every turn with reliability and trustworthiness.
+            At Peakvisory, we pride ourselves on delivering top-tier services. We believe trust takes years to build and only seconds to break, so we strive to exceed your expectations at every turn with reliability and trustworthiness.
           </p>
           <p className="text-lg mt-4 opacity-90">
             Ready to see how partnering with us makes all the difference? Let's discuss your financial goals, and we'll craft customized strategies together. Nothing matters more than helping you reach new heights.

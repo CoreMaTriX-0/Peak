@@ -101,17 +101,3 @@ All colors MUST be HSL.
     scroll-behavior: smooth;
   }
 }
-
-/* Global Blur Text Animation for H1 */
-@layer utilities {
-  .blur-text-initial {
-    filter: blur(10px);
-    opacity: 0;
-    transition: filter 0.8s ease-out, opacity 0.8s ease-out;
-  }
-
-  .blur-text-animate {
-    filter: blur(0px);
-    opacity: 1;
-  }
-}
