@@ -50,19 +50,3 @@ Deploy using Netlify, Vercel, or any static hosting service:
 
 1. Build the project: `npm run build`
 2. Deploy the `dist` folder to your hosting service
-
-### Netlify
-- Connect your repository to Netlify
-- Build command: `npm run build`
-- Publish directory: `dist`
-
-### Vercel
-- Connect your repository to Vercel
-- Build command: `npm run build`
-- Output directory: `dist`
-
-## Custom Domain
-
-You can connect a custom domain through your hosting provider:
-- [Netlify Custom Domains](https://docs.netlify.com/domains-https/custom-domains/)
-- [Vercel Custom Domains](https://vercel.com/docs/concepts/projects/custom-domains)
