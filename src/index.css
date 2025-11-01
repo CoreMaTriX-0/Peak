@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 195 100% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 206 16% 42%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 195 100% 15%;
+
+    --primary: 195 100% 18%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 195 100% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 17% 96%;
+    --muted-foreground: 206 16% 42%;
+
+    --accent: 145 63% 49%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 17% 90%;
+    --input: 210 17% 90%;
+    --ring: 195 100% 45%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 195 100% 18%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 195 100% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 195 100% 25%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 195 100% 25%;
+    --sidebar-ring: 195 100% 45%;
+  }
+
+  .dark {
+    --background: 195 100% 10%;
+    --foreground: 0 0% 100%;
+
+    --card: 195 100% 15%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 195 100% 15%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 195 100% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 195 100% 25%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 195 100% 20%;
+    --muted-foreground: 210 17% 80%;
+
+    --accent: 145 63% 49%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 195 100% 20%;
+    --input: 195 100% 20%;
+    --ring: 195 100% 45%;
+    
+    --sidebar-background: 195 100% 12%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 195 100% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 195 100% 18%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 195 100% 18%;
+    --sidebar-ring: 195 100% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Global Blur Text Animation for H1 */
+@layer utilities {
+  .blur-text-initial {
+    filter: blur(10px);
+    opacity: 0;
+    transition: filter 0.8s ease-out, opacity 0.8s ease-out;
+  }
+
+  .blur-text-animate {
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
