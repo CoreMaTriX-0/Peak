@@ -140,9 +140,10 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
     });
   };
 
-  const handleCardClick = (url?: string) => {
+  const handleEmailClick = (e: React.MouseEvent, url?: string) => {
+    e.stopPropagation();
     if (url) {
-      window.open(url, '_blank', 'noopener,noreferrer');
+      window.location.href = url;
     }
   };
 
@@ -174,12 +175,10 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
           key={i}
           className="chroma-card"
           onMouseMove={handleCardMove}
-          onClick={() => handleCardClick(c.url)}
           style={
             {
               '--card-border': c.borderColor || 'transparent',
-              '--card-gradient': c.gradient,
-              cursor: c.url ? 'pointer' : 'default'
+              '--card-gradient': c.gradient
             } as React.CSSProperties
           }
         >
@@ -188,7 +187,15 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
           </div>
           <footer className="chroma-info">
             <h3 className="name">{c.title}</h3>
-            {c.handle && <span className="handle">{c.handle}</span>}
+            {c.handle && (
+              <span 
+                className="handle" 
+                onClick={(e) => handleEmailClick(e, c.url)}
+                style={{ cursor: c.url ? 'pointer' : 'default' }}
+              >
+                {c.handle}
+              </span>
+            )}
             <p className="role">{c.subtitle}</p>
             {c.location && <span className="location">{c.location}</span>}
           </footer>
