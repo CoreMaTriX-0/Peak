@@ -244,15 +244,15 @@ const Index = () => {
       {/* Testimonials */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center">What Our UAE Clients Say</h2>
+          <h2 className="text-4xl font-bold mb-12 text-center">What Our Indian Clients Say</h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <Card>
               <CardContent className="pt-6">
                 <p className="text-muted-foreground italic mb-4">
                   "Peakvisory helped us transform our financial processes. Their expertise helped us ensure regulatory compliance."
                 </p>
-                <p className="font-semibold">— CEO, Technology Company</p>
-                <p className="text-sm text-muted-foreground">Managing Director</p>
+                <p className="font-semibold">— Rajesh Kumar</p>
+                <p className="text-sm text-muted-foreground">CEO, Technology Company</p>
               </CardContent>
             </Card>
 
@@ -261,8 +261,8 @@ const Index = () => {
                 <p className="text-muted-foreground italic mb-4">
                   "Choosing Peakvisory was the best decision for our company. Their team goes above and beyond to ensure we stay ahead with exceptional service."
                 </p>
-                <p className="font-semibold">— Ahmed Al Mansoori</p>
-                <p className="text-sm text-muted-foreground">Operations Manager, LLC</p>
+                <p className="font-semibold">— Priya Sharma</p>
+                <p className="text-sm text-muted-foreground">Operations Manager, Pvt Ltd</p>
               </CardContent>
             </Card>
           </div>

@@ -20,7 +20,7 @@ const OurTeam = () => {
       title: "Michael Chen",
       subtitle: "Tax & Compliance Specialist",
       handle: "michael.chen@peakvisory.com",
-      location: "Michael brings 12 years of expertise in UAE tax regulations and compliance, ensuring our clients stay ahead of regulatory requirements.",
+      location: "Michael brings 12 years of expertise in Indian tax regulations and compliance, ensuring our clients stay ahead of regulatory requirements.",
       borderColor: "#10B981",
       gradient: "linear-gradient(210deg, #10B981, #065f46)",
       url: "mailto:michael.chen@peakvisory.com"
