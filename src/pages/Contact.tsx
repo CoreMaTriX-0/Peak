@@ -39,20 +39,22 @@ const Contact = () => {
       <main className="flex-1">
         <section ref={heroRef} className="py-20 bg-muted">
           <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">
-              <VariableProximity
-                label="Contact Us"
-                fromFontVariationSettings="'wght' 400"
-                toFontVariationSettings="'wght' 900"
-                containerRef={heroRef}
-                radius={120}
-                falloff="exponential"
-                className="inline-block"
-              />
-            </h1>
-            <p className="text-center text-muted-foreground max-w-2xl mx-auto">
-              Get in touch with us for all your accounting and financial service needs
-            </p>
+            <div className="animate-fade-in">
+              <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">
+                <VariableProximity
+                  label="Contact Us"
+                  fromFontVariationSettings="'wght' 400"
+                  toFontVariationSettings="'wght' 900"
+                  containerRef={heroRef}
+                  radius={120}
+                  falloff="exponential"
+                  className="inline-block"
+                />
+              </h1>
+              <p className="text-center text-muted-foreground max-w-2xl mx-auto">
+                Get in touch with us for all your accounting and financial service needs
+              </p>
+            </div>
           </div>
         </section>
 

@@ -182,34 +182,6 @@ const WhoWeAre = () => {
         </div>
       </section>
 
-      {/* Testimonials - Horizontal Auto-Scroll */}
-      <section className="py-16 bg-muted overflow-hidden">
-        <div className="container mx-auto px-4 mb-8">
-          <h2 className="text-4xl font-bold text-center mb-4">What Our UAE Clients Say</h2>
-          <p className="text-center text-muted-foreground">Real feedback from our valued clients</p>
-        </div>
-        <div className="relative">
-          <div className="flex gap-6 animate-scroll">
-            {[...testimonials, ...testimonials].map((testimonial, index) => (
-              <Card key={index} className="min-w-[400px] flex-shrink-0">
-                <CardContent className="pt-6">
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
-                    ))}
-                  </div>
-                  <p className="text-muted-foreground italic mb-4">"{testimonial.text}"</p>
-                  <div className="border-t pt-4">
-                    <p className="font-semibold">{testimonial.author}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.position}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Why Choose Peakvisory - Text Left, Image Right */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
@@ -364,6 +336,34 @@ const WhoWeAre = () => {
           <p className="text-lg max-w-4xl mx-auto opacity-90">
             All Peakvisory staff is committed to the Peakvisory Experience. We ensure there is a clear understanding with our clients about the work we will perform, the support we require of our clients to enable us to perform effectively, and our pricing and delivery dates. We strive to thoroughly understand our client's businesses and goals to help them achieve their goals and objectives.
           </p>
+        </div>
+      </section>
+
+      {/* Testimonials - Horizontal Auto-Scroll */}
+      <section className="py-16 bg-muted overflow-hidden">
+        <div className="container mx-auto px-4 mb-8">
+          <h2 className="text-4xl font-bold text-center mb-4">What Our UAE Clients Say</h2>
+          <p className="text-center text-muted-foreground">Real feedback from our valued clients</p>
+        </div>
+        <div className="relative">
+          <div className="flex gap-6 animate-scroll">
+            {[...testimonials, ...testimonials].map((testimonial, index) => (
+              <Card key={index} className="min-w-[400px] flex-shrink-0">
+                <CardContent className="pt-6">
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                    ))}
+                  </div>
+                  <p className="text-muted-foreground italic mb-4">"{testimonial.text}"</p>
+                  <div className="border-t pt-4">
+                    <p className="font-semibold">{testimonial.author}</p>
+                    <p className="text-sm text-muted-foreground">{testimonial.position}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 

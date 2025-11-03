@@ -76,7 +76,7 @@ const OurTeam = () => {
       {/* Hero Section */}
       <section ref={heroRef} className="py-20 bg-gradient-to-br from-primary via-primary to-primary/90 text-primary-foreground">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               <VariableProximity
                 label="Meet Our Team"

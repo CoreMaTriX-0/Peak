@@ -6,11 +6,20 @@ import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import VariableProximity from "@/components/ui/variable-proximity";
 import CountUp from "@/components/ui/count-up";
+import CardSwap from "@/components/ui/card-swap";
 import { useRef } from "react";
 
 const Index = () => {
   const whoWeAreRef = useRef<HTMLElement>(null);
   const heroRef = useRef<HTMLElement>(null);
+  
+  const heroImages = [
+    "https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=600&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=600&fit=crop"
+  ];
+  
   const services = [
     { title: "Accounting & Financial Services", description: "Comprehensive financial management solutions" },
     { title: "Bookkeeping", description: "Accurate and timely record-keeping services" },
@@ -33,26 +42,48 @@ const Index = () => {
       <Header />
 
       {/* Hero Section */}
-      <section ref={heroRef} className="py-28 bg-gradient-to-br from-primary via-primary to-primary/90 text-primary-foreground">
+      <section ref={heroRef} className="min-h-screen flex items-center bg-gradient-to-br from-primary via-primary to-primary/90 text-primary-foreground -mt-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              <VariableProximity
-                label="Why Choose Peakvisory"
-                fromFontVariationSettings="'wght' 400"
-                toFontVariationSettings="'wght' 900"
-                containerRef={heroRef}
-                radius={120}
-                falloff="exponential"
-                className="inline-block"
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left Side - Text Content */}
+            <div className="animate-fade-in">
+              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                <VariableProximity
+                  label="Bring Excellency With Our Expertise"
+                  fromFontVariationSettings="'wght' 400"
+                  toFontVariationSettings="'wght' 900"
+                  containerRef={heroRef}
+                  radius={120}
+                  falloff="exponential"
+                  className="inline-block"
+                />
+              </h1>
+              <p className="text-xl mb-4 opacity-90">
+                Your Partner in Empowering Financial Success<br />
+                Accounting | Tax | Advisory
+              </p>
+              <p className="text-xl mb-8 opacity-90">
+                Peakvisory is an Accounting and Taxation firm in UAE. We are an independent member firm of Peakvisory Limited, United Kingdom.
+              </p>
+              <Button size="lg" variant="secondary" asChild className="px-8 py-6 text-lg">
+                <Link to="/contact">Book Appointment</Link>
+              </Button>
+            </div>
+            
+            {/* Right Side - Animated Image */}
+            <div className="flex items-center justify-center">
+              <CardSwap 
+                images={heroImages}
+                width={500}
+                height={400}
+                cardDistance={60}
+                verticalDistance={70}
+                delay={4000}
+                pauseOnHover={false}
+                skewAmount={5}
+                easing="elastic"
               />
-            </h1>
-            <p className="text-xl mb-8 opacity-90">
-              At Peakvisory, your success is our business. We're a passionate team committed to helping clients thrive by offering expert accounting and financial guidance tailored to their unique needs.
-            </p>
-            <Button size="lg" variant="secondary" asChild className="px-8 py-6 text-lg">
-              <Link to="/contact">Get Started</Link>
-            </Button>
+            </div>
           </div>
         </div>
       </section>
