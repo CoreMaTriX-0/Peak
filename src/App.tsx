@@ -8,7 +8,6 @@ import Contact from "./pages/Contact";
 import OurTeam from "./pages/OurTeam";
 import WhoWeAre from "./pages/WhoWeAre";
 import NotFound from "./pages/NotFound";
-import GlobalClickSpark from "@/components/GlobalClickSpark";
 import ScrollToTop from "@/components/ScrollToTop";
 
 const queryClient = new QueryClient();
@@ -18,7 +17,6 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <GlobalClickSpark sparkCount={12} sparkColor="#FBBF24" sparkSize={8} />
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
