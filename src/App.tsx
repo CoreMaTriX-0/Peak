@@ -7,6 +7,8 @@ import Index from "./pages/Index";
 import Contact from "./pages/Contact";
 import OurTeam from "./pages/OurTeam";
 import WhoWeAre from "./pages/WhoWeAre";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "@/components/ScrollToTop";
 
@@ -24,6 +26,8 @@ const App = () => (
           <Route path="/who-we-are" element={<WhoWeAre />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/our-team" element={<OurTeam />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

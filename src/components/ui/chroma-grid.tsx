@@ -23,6 +23,7 @@ export interface ChromaGridProps {
   damping?: number;
   fadeOut?: number;
   ease?: string;
+  clickableCard?: boolean; // New prop to make entire card clickable
 }
 
 type SetterFn = (v: number | string) => void;
@@ -35,7 +36,8 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
   rows = 2,
   damping = 0.45,
   fadeOut = 0.6,
-  ease = 'power3.out'
+  ease = 'power3.out',
+  clickableCard = false
 }) => {
   const rootRef = useRef<HTMLDivElement>(null);
   const fadeRef = useRef<HTMLDivElement>(null);
@@ -147,6 +149,12 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
     }
   };
 
+  const handleCardClick = (url?: string) => {
+    if (clickableCard && url) {
+      window.location.href = url;
+    }
+  };
+
   const handleCardMove: React.MouseEventHandler<HTMLElement> = e => {
     const card = e.currentTarget as HTMLElement;
     const rect = card.getBoundingClientRect();
@@ -175,10 +183,12 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
           key={i}
           className="chroma-card"
           onMouseMove={handleCardMove}
+          onClick={() => handleCardClick(c.url)}
           style={
             {
               '--card-border': c.borderColor || 'transparent',
-              '--card-gradient': c.gradient
+              '--card-gradient': c.gradient,
+              cursor: clickableCard ? 'pointer' : 'default'
             } as React.CSSProperties
           }
         >
@@ -190,8 +200,8 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
             {c.handle && (
               <span 
                 className="handle" 
-                onClick={(e) => handleEmailClick(e, c.url)}
-                style={{ cursor: c.url ? 'pointer' : 'default' }}
+                onClick={(e) => clickableCard ? undefined : handleEmailClick(e, c.url)}
+                style={{ cursor: clickableCard ? 'default' : (c.url ? 'pointer' : 'default') }}
               >
                 {c.handle}
               </span>
