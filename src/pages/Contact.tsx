@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Mail, Phone, MapPin, Facebook, Linkedin, Instagram, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,9 +7,10 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import BlurText from "@/components/ui/blur-text";
+import VariableProximity from "@/components/ui/variable-proximity";
 
 const Contact = () => {
+  const heroRef = useRef<HTMLElement>(null);
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -36,14 +37,19 @@ const Contact = () => {
       <Header />
       
       <main className="flex-1">
-        <section className="py-20 bg-muted">
+        <section ref={heroRef} className="py-20 bg-muted">
           <div className="container mx-auto px-4">
-            <BlurText 
-              text="Contact Us" 
-              className="text-4xl md:text-5xl font-bold text-center mb-4"
-              duration={0.8}
-              as="h1"
-            />
+            <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">
+              <VariableProximity
+                label="Contact Us"
+                fromFontVariationSettings="'wght' 400"
+                toFontVariationSettings="'wght' 900"
+                containerRef={heroRef}
+                radius={120}
+                falloff="exponential"
+                className="inline-block"
+              />
+            </h1>
             <p className="text-center text-muted-foreground max-w-2xl mx-auto">
               Get in touch with us for all your accounting and financial service needs
             </p>

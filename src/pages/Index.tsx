@@ -4,13 +4,13 @@ import { CheckCircle, TrendingUp, Users, Shield, Target, Award } from "lucide-re
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
-import BlurText from "@/components/ui/blur-text";
 import VariableProximity from "@/components/ui/variable-proximity";
 import CountUp from "@/components/ui/count-up";
 import { useRef } from "react";
 
 const Index = () => {
   const whoWeAreRef = useRef<HTMLElement>(null);
+  const heroRef = useRef<HTMLElement>(null);
   const services = [
     { title: "Accounting & Financial Services", description: "Comprehensive financial management solutions" },
     { title: "Bookkeeping", description: "Accurate and timely record-keeping services" },
@@ -33,15 +33,20 @@ const Index = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="py-28 bg-gradient-to-br from-primary via-primary to-primary/90 text-primary-foreground">
+      <section ref={heroRef} className="py-28 bg-gradient-to-br from-primary via-primary to-primary/90 text-primary-foreground">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            <BlurText 
-              text="Why Choose Peakvisory" 
-              className="text-5xl md:text-6xl font-bold mb-6"
-              duration={0.8}
-              as="h1"
-            />
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+              <VariableProximity
+                label="Why Choose Peakvisory"
+                fromFontVariationSettings="'wght' 400"
+                toFontVariationSettings="'wght' 900"
+                containerRef={heroRef}
+                radius={120}
+                falloff="exponential"
+                className="inline-block"
+              />
+            </h1>
             <p className="text-xl mb-8 opacity-90">
               At Peakvisory, your success is our business. We're a passionate team committed to helping clients thrive by offering expert accounting and financial guidance tailored to their unique needs.
             </p>

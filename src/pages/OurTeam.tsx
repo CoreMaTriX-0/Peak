@@ -1,9 +1,11 @@
+import { useRef } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import BlurText from "@/components/ui/blur-text";
+import VariableProximity from "@/components/ui/variable-proximity";
 import { ChromaGrid, ChromaItem } from "@/components/ui/chroma-grid";
 
 const OurTeam = () => {
+  const heroRef = useRef<HTMLElement>(null);
   const teamMembers: ChromaItem[] = [
     {
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
@@ -72,15 +74,20 @@ const OurTeam = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary via-primary to-primary/90 text-primary-foreground">
+      <section ref={heroRef} className="py-20 bg-gradient-to-br from-primary via-primary to-primary/90 text-primary-foreground">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <BlurText
-              text="Meet Our Team"
-              className="text-5xl md:text-6xl font-bold mb-6"
-              duration={0.8}
-              as="h1"
-            />
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+              <VariableProximity
+                label="Meet Our Team"
+                fromFontVariationSettings="'wght' 400"
+                toFontVariationSettings="'wght' 900"
+                containerRef={heroRef}
+                radius={120}
+                falloff="exponential"
+                className="inline-block"
+              />
+            </h1>
             <p className="text-xl opacity-90">
               When it comes to getting help dealing with your business finances, we believe that it's not just a question of price, but also a question of quality, efficiency and above all trust. After all, you need to know your business is in safe hands.
             </p>

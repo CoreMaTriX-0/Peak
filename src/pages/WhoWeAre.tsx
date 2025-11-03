@@ -5,7 +5,6 @@ import { CheckCircle, TrendingUp, Users, Shield, Target, Award, Lightbulb, Zap, 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
-import BlurText from "@/components/ui/blur-text";
 import VariableProximity from "@/components/ui/variable-proximity";
 
 const WhoWeAre = () => {
