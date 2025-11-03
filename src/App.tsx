@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Contact from "./pages/Contact";
 import OurTeam from "./pages/OurTeam";
+import WhoWeAre from "./pages/WhoWeAre";
 import NotFound from "./pages/NotFound";
 import GlobalClickSpark from "@/components/GlobalClickSpark";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -22,6 +23,7 @@ const App = () => (
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/who-we-are" element={<WhoWeAre />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/our-team" element={<OurTeam />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
