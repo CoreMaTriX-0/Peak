@@ -19,7 +19,7 @@ const CardSwap = ({
   images, 
   interval = 5000,
   className = '',
-  width = 200,
+  width = 500,
   height = 400,
   cardDistance = 60,
   verticalDistance = 70,
@@ -30,6 +30,17 @@ const CardSwap = ({
 }: CardSwapProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     if (isPaused && pauseOnHover) return;
@@ -45,13 +56,17 @@ const CardSwap = ({
     const position = (index - currentIndex + images.length) % images.length;
     const isTop = position === 0;
     
+    // Reduce distances on mobile
+    const mobileCardDistance = isMobile ? cardDistance * 0.3 : cardDistance;
+    const mobileVerticalDistance = isMobile ? verticalDistance * 0.3 : verticalDistance;
+    
     return {
       zIndex: images.length - position,
-      x: position * cardDistance,
-      y: position * verticalDistance,
+      x: position * mobileCardDistance,
+      y: position * mobileVerticalDistance,
       scale: 1 - position * 0.05,
       opacity: position < 3 ? 1 : 0,
-      rotateZ: isTop ? 0 : position * skewAmount,
+      rotateZ: isTop ? 0 : position * (isMobile ? skewAmount * 0.5 : skewAmount),
     };
   };
 
@@ -59,15 +74,26 @@ const CardSwap = ({
     ? { type: 'spring' as const, stiffness: 200, damping: 30, mass: 0.8 }
     : { duration: 0.8, ease: [0.4, 0, 0.2, 1] as const };
 
+  // Responsive dimensions
+  const responsiveWidth = typeof width === 'number' 
+    ? isMobile ? '100%' : `${width}px` 
+    : width;
+  const responsiveHeight = typeof height === 'number' 
+    ? isMobile ? 'auto' : `${height}px` 
+    : height;
+
   return (
     <div 
       className={`relative ${className}`}
       style={{ 
-        width: typeof width === 'number' ? `${width}px` : width,
-        height: typeof height === 'number' ? `${height}px` : height,
+        width: responsiveWidth,
+        height: responsiveHeight,
+        aspectRatio: isMobile ? '4/3' : undefined,
       }}
       onMouseEnter={() => pauseOnHover && setIsPaused(true)}
       onMouseLeave={() => pauseOnHover && setIsPaused(false)}
+      onTouchStart={() => pauseOnHover && setIsPaused(true)}
+      onTouchEnd={() => pauseOnHover && setIsPaused(false)}
     >
       {images.map((image, index) => {
         const style = getCardStyle(index);
