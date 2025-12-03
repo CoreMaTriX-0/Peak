@@ -16,7 +16,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           <div>
-            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">PeakVisory</h3>
+            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">GVS Consulting</h3>
             <p className="text-xs sm:text-sm opacity-90 mb-3 sm:mb-4">Delivering on the Promise</p>
             <p className="text-xs sm:text-sm opacity-80">
               Your trusted partner in accounting and financial services
@@ -44,8 +44,8 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-start gap-2 text-xs sm:text-sm opacity-80">
                 <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <a href="mailto:info@peakvisory.com" className="hover:opacity-100 break-all">
-                  info@peakvisory.com
+                <a href="mailto:info@gvsconsulting.com" className="hover:opacity-100 break-all">
+                  info@gvsconsulting.com
                 </a>
               </div>
               <div className="flex items-start gap-2 text-xs sm:text-sm opacity-80">
@@ -75,7 +75,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-primary-foreground/20 mt-6 sm:mt-8 pt-4 sm:pt-6 text-center text-xs sm:text-sm opacity-80">
-          <p>&copy; {new Date().getFullYear()} PeakVisory. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} GVS Consulting. All rights reserved.</p>
         </div>
       </div>
     </footer>

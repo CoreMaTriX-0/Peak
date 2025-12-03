@@ -19,9 +19,12 @@ const Header = () => {
     <header className="sticky top-0 z-50 w-full bg-background border-b border-border">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          <Link to="/" className="flex flex-col">
-            <h1 className="text-2xl font-bold text-primary">PeakVisory</h1>
-            <p className="text-xs text-muted-foreground">Delivering on the Promise</p>
+          <Link to="/" className="flex items-center">
+            <img
+              src="/logo.png"
+              alt="GVS Consulting - Delivering on the Promise"
+              className="h-12 w-auto object-contain"
+            />
           </Link>
 
           <PillNav items={menuItems} className="hidden md:flex" />

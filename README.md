@@ -1,6 +1,6 @@
-# Peakvisory - Expert Accounting & Financial Services
+# GVS Consulting - Expert Accounting & Financial Services
 
-This is a React + TypeScript + Vite project for Peakvisory, a professional accounting and financial services firm.
+This is a React + TypeScript + Vite project for GVS Consulting, a professional accounting and financial services firm.
 
 ## Project Setup
 

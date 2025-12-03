@@ -20,7 +20,7 @@ const WhoWeAre = () => {
 
   const testimonials = [
     {
-      text: "Peakvisory transformed our financial operations. Their expertise in VAT compliance and proactive support helped us achieve 100% compliance.",
+      text: "GVS Consulting transformed our financial operations. Their expertise in VAT compliance and proactive support helped us achieve 100% compliance.",
       author: "Ahmed Al Mansouri",
       position: "CEO, Tech Innovations LLC",
       rating: 5
@@ -38,7 +38,7 @@ const WhoWeAre = () => {
       rating: 5
     },
     {
-      text: "Peakvisory's personalized approach sets them apart. They truly understand our business goals and provide tailored solutions.",
+      text: "GVS Consulting's personalized approach sets them apart. They truly understand our business goals and provide tailored solutions.",
       author: "Layla Abdullah",
       position: "CFO, Healthcare Services",
       rating: 5
@@ -50,7 +50,7 @@ const WhoWeAre = () => {
       rating: 5
     },
     {
-      text: "The 95% client retention rate speaks for itself. We've been with Peakvisory for 5 years and couldn't be happier.",
+      text: "The 95% client retention rate speaks for itself. We've been with GVS Consulting for 5 years and couldn't be happier.",
       author: "Sara Al Zaabi",
       position: "Operations Manager, Construction Co.",
       rating: 5
@@ -67,7 +67,7 @@ const WhoWeAre = () => {
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               <VariableProximity
-                label="Who we are?"
+                label="We Don't Just Record Data, We Deliver Peace of Mind."
                 fromFontVariationSettings="'wght' 400"
                 toFontVariationSettings="'wght' 900"
                 containerRef={heroRef}
@@ -77,10 +77,10 @@ const WhoWeAre = () => {
               />
             </h1>
             <p className="text-xl mb-6 opacity-90">
-              At Peakvisory, your ambitions drive our mission.
+              Your Partner in Building a Bulletproof Financial Foundation
             </p>
             <p className="text-lg opacity-90">
-              We are a team of dedicated accounting and taxation professionals committed to helping clients achieve clarity and confidence in their financial journey. From day one, we've focused on more than just numbers; our priority is delivering proactive support and solutions that empower you to grow your business, optimize your finances, and enjoy peace of mind.
+              In the fast-paced world of scaling a business, financial errors and delays are costly distractions. Our Core Accounting and Bookkeeping services are designed to eliminate the administrative burden, delivering a flawless financial structure you can trust.
             </p>
           </div>
         </div>
@@ -91,41 +91,41 @@ const WhoWeAre = () => {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold mb-6">Why Work With Us?</h2>
+              <h2 className="text-4xl font-bold mb-6">What You Gain By Partnering With Us</h2>
               <div className="space-y-6">
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Unmatched Communication</h3>
+                    <h3 className="text-xl font-semibold mb-2">Actionable Clarity</h3>
                     <p className="text-muted-foreground">
-                      We pride ourselves on our responsive and transparent service. Whether you have a quick question or need in-depth advice, our team is only an email or call away.
+                      Move beyond basic reports. Our monthly packages include insightful analysis on key drivers, empowering you to make strategic, data-backed decisions about your future growth.
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Expertise You Can Trust</h3>
+                    <h3 className="text-xl font-semibold mb-2">Guaranteed Timeliness</h3>
                     <p className="text-muted-foreground">
-                      Our professionals bring deep industry knowledge and hands-on experience, ensuring your accounting, tax, and business needs are handled seamlessly.
+                      Say goodbye to late month-end closes. We commit to a consistent, predictable schedule, ensuring your financial statements are ready when you need them for investors, banks, or board meetings.
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Client-Centric Approach</h3>
+                    <h3 className="text-xl font-semibold mb-2">Reduced Compliance Risk</h3>
                     <p className="text-muted-foreground">
-                      Your success comes first. We tailor our services to match your goals, providing personalized guidance every step of the way.
+                      Your entire process is managed by finance professionals who understand current compliance requirements, minimizing the risk of penalties and costly audits.
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-xl font-semibold mb-2">Support Wherever You Are</h3>
+                    <h3 className="text-xl font-semibold mb-2">Predictable Fixed Monthly Fees</h3>
                     <p className="text-muted-foreground">
-                      We understand that business happens on your schedule. Our remote and flexible service model allows us to support you wherever you are, offering unlimited access to the answers you need.
+                      No surprises. Our transparent pricing model means you know exactly what you're paying each month, allowing for better budget planning and cost control.
                     </p>
                   </div>
                 </div>
@@ -148,10 +148,10 @@ const WhoWeAre = () => {
             <div>
               <h2 className="text-4xl font-bold mb-6">Our Commitment</h2>
               <p className="text-lg text-muted-foreground mb-6">
-                At Peakvisory, your peace of mind is our highest priority. We keep you informed and prepared for every financial milestone, so you can focus on what matters most—growing your business and living a balanced life.
+                At GVS Consulting, your peace of mind is our highest priority. We keep you informed and prepared for every financial milestone, so you can focus on what matters most—growing your business and living a balanced life.
               </p>
               <p className="text-lg text-muted-foreground mb-8">
-                Ready to experience accounting with a difference? Discover how Peakvisory can help you reach new heights.
+                Ready to experience accounting with a difference? Discover how GVS Consulting can help you reach new heights.
               </p>
               <Button size="lg" asChild>
                 <Link to="/contact">Contact Us</Link>
@@ -182,12 +182,12 @@ const WhoWeAre = () => {
         </div>
       </section>
 
-      {/* Why Choose Peakvisory - Text Left, Image Right */}
+      {/* Why Choose GVS Consulting - Text Left, Image Right */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold mb-6">Why Choose Peakvisory</h2>
+              <h2 className="text-4xl font-bold mb-6">Why Choose GVS Consulting</h2>
               <h3 className="text-2xl font-semibold mb-6 text-secondary">Making Clients The Priority</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
@@ -235,7 +235,7 @@ const WhoWeAre = () => {
         </div>
       </section>
 
-      {/* Peakvisory Difference - Image Left, Text Right */}
+      {/* GVS Consulting Difference - Image Left, Text Right */}
       <section className="py-16 bg-muted">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -243,7 +243,7 @@ const WhoWeAre = () => {
               <Target className="w-40 h-40 text-secondary/60" />
             </div>
             <div>
-              <h2 className="text-3xl font-bold mb-6">There are many reasons to choose PEAKVISORY:</h2>
+              <h2 className="text-3xl font-bold mb-6">There are many reasons to choose GVS CONSULTING:</h2>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
@@ -280,7 +280,7 @@ const WhoWeAre = () => {
                 We enjoy long and successful relationships with many businesses, public organisations and family groups. We are large enough to offer you a range of expertise yet flexible enough to give you personalised service.
               </p>
               <p className="text-xl font-semibold mb-8 text-secondary">
-                This is the Peakvisory Experience.
+                This is the GVS Consulting Experience.
               </p>
               <Button size="lg" asChild>
                 <Link to="/contact">Contact Us</Link>
@@ -327,14 +327,14 @@ const WhoWeAre = () => {
         </div>
       </section>
 
-      {/* The Peakvisory Experience */}
+      {/* The GVS Consulting Experience */}
       <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">
-            The PEAKVISORY Experience is more than rhetoric: it's our guarantee of exceptional service
+            The GVS CONSULTING Experience is more than rhetoric: it's our guarantee of exceptional service
           </h2>
           <p className="text-lg max-w-4xl mx-auto opacity-90">
-            All Peakvisory staff is committed to the Peakvisory Experience. We ensure there is a clear understanding with our clients about the work we will perform, the support we require of our clients to enable us to perform effectively, and our pricing and delivery dates. We strive to thoroughly understand our client's businesses and goals to help them achieve their goals and objectives.
+            All GVS Consulting staff is committed to the GVS Consulting Experience. We ensure there is a clear understanding with our clients about the work we will perform, the support we require of our clients to enable us to perform effectively, and our pricing and delivery dates. We strive to thoroughly understand our client's businesses and goals to help them achieve their goals and objectives.
           </p>
         </div>
       </section>

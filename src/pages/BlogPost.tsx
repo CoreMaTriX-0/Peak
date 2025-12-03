@@ -52,7 +52,7 @@ const blogPostsData: Record<string, any> = {
       <p>Ensure your finance team stays updated on VAT regulations through regular training and professional development.</p>
       
       <h3>Professional Assistance</h3>
-      <p>Partner with experienced accounting firms like Peakvisory to navigate complex scenarios and ensure full compliance.</p>
+      <p>Partner with experienced accounting firms like GVS Consulting to navigate complex scenarios and ensure full compliance.</p>
       
       <h2>Recent Updates and Changes</h2>
       <p>The UAE's Federal Tax Authority regularly updates VAT guidelines. Recent changes include clarifications on e-commerce transactions, real estate supplies, and digital services.</p>
@@ -60,7 +60,7 @@ const blogPostsData: Record<string, any> = {
       <h2>Conclusion</h2>
       <p>VAT compliance in the UAE requires diligence, proper systems, and ongoing attention to regulatory updates. By implementing robust processes and seeking expert guidance when needed, businesses can maintain compliance while minimizing administrative burden.</p>
       
-      <p>At Peakvisory, our team of tax specialists stays current with all VAT developments to provide you with accurate, timely advice. Contact us today to discuss your VAT compliance needs.</p>
+      <p>At GVS Consulting, our team of tax specialists stays current with all VAT developments to provide you with accurate, timely advice. Contact us today to discuss your VAT compliance needs.</p>
     `
   },
   "cloud-based-accounting": {
@@ -123,7 +123,7 @@ const blogPostsData: Record<string, any> = {
       </ul>
       
       <h2>Making the Switch</h2>
-      <p>Transitioning to cloud accounting is easier than many businesses expect. At Peakvisory, we guide clients through the entire process—from platform selection and data migration to staff training and ongoing optimization.</p>
+      <p>Transitioning to cloud accounting is easier than many businesses expect. At GVS Consulting, we guide clients through the entire process—from platform selection and data migration to staff training and ongoing optimization.</p>
       
       <p>Ready to modernize your accounting? Contact us to discuss which cloud solution is right for your business and how we can help you make a smooth transition.</p>
     `
@@ -203,7 +203,7 @@ const blogPostsData: Record<string, any> = {
       <h2>Working with Tax Professionals</h2>
       <p>While understanding tax basics is valuable, partnering with experienced tax advisors ensures you're maximizing all available benefits while maintaining full compliance.</p>
       
-      <p>At Peakvisory, we develop customized tax strategies aligned with your business goals. Our proactive approach identifies opportunities throughout the year, not just at tax time. Contact us to schedule a tax planning consultation.</p>
+      <p>At GVS Consulting, we develop customized tax strategies aligned with your business goals. Our proactive approach identifies opportunities throughout the year, not just at tax time. Contact us to schedule a tax planning consultation.</p>
     `
   }
 };

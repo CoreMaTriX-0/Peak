@@ -21,12 +21,37 @@ const Index = () => {
   ];
   
   const services = [
-    { title: "Accounting & Financial Services", description: "Comprehensive financial management solutions" },
-    { title: "Bookkeeping", description: "Accurate and timely record-keeping services" },
-    { title: "Taxation", description: "Expert tax planning and compliance" },
-    { title: "Payroll", description: "Efficient payroll management solutions" },
-    { title: "Advisory Services", description: "Strategic business advisory" },
-    { title: "Compliance Services", description: "Regulatory compliance support" },
+    { 
+      title: "Daily & Transactional Accounting", 
+      description: "The meticulous handling of your daily financial workflow, ensuring every dollar is tracked correctly.",
+      items: [
+        "Accounts Payable (A/P) Management & Vendor Payments",
+        "Accounts Receivable (A/R) & Customer Invoicing",
+        "Daily Bank and Credit Card Reconciliation",
+        "Employee Expense Report Processing & Policy Adherence",
+        "Dedicated Document Management and Secure Data Storage"
+      ]
+    },
+    { 
+      title: "Monthly Financial Close & Reporting", 
+      description: "Turning raw data into strategic insights on a reliable schedule.",
+      items: [
+        "Journal Entry Preparation & General Ledger Maintenance",
+        "Inventory and Fixed Asset Tracking",
+        "Robust Monthly Financial Reporting Package: Including Profit & Loss, Balance Sheet, and Statement of Cash Flows",
+        "Custom Dashboards and Key Performance Indicator (KPI) Tracking",
+        "Executive Summary Narrative highlighting key financial trends and anomalies"
+      ]
+    },
+    { 
+      title: "Compliance & Technology Integration", 
+      description: "Leverage the power of modern technology for seamless, audit-ready operations.",
+      items: [
+        "Seamless Integration with your Existing Tech Stack (e.g., QuickBooks, Xero, Bill.com)",
+        "Sales Tax Filing and Regulatory Compliance (Local, State, and Federal)",
+        "Year-End Preparation and Collaboration with Your Tax CPA"
+      ]
+    },
   ];
 
   const values = [
@@ -49,7 +74,7 @@ const Index = () => {
             <div className="animate-fade-in">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
                 <VariableProximity
-                  label="Bring Excellency With Our Expertise"
+                  label="Core Accounting & Bookkeeping Services"
                   fromFontVariationSettings="'wght' 400"
                   toFontVariationSettings="'wght' 900"
                   containerRef={heroRef}
@@ -59,11 +84,11 @@ const Index = () => {
                 />
               </h1>
               <p className="text-base sm:text-lg md:text-xl mb-3 sm:mb-4 opacity-90">
-                Your Partner in Empowering Financial Success<br />
-                Accounting | Tax | Advisory
+                Accurate Books | On-Time Reports | Zero Headaches<br />
+                Your Reliable Finance Foundation.
               </p>
               <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 opacity-90">
-                Peakvisory is an Accounting and Taxation firm in UAE. We are an independent member firm of Peakvisory Limited, United Kingdom.
+                We handle the complexity of daily financial operations, delivering clean, actionable data for compliance and decision-making. Stop worrying about the details - start acting on the facts.
               </p>
               <Button size="lg" variant="secondary" asChild className="w-full sm:w-auto px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg">
                 <Link to="/contact">Book Appointment</Link>
@@ -125,7 +150,7 @@ const Index = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8">
             <VariableProximity
-              label="Who we are?"
+              label="We Don't Just Record Data, We Deliver Peace of Mind."
               fromFontVariationSettings="'wght' 400"
               toFontVariationSettings="'wght' 900"
               containerRef={whoWeAreRef}
@@ -136,10 +161,36 @@ const Index = () => {
           </h2>
           <div className="prose max-w-4xl">
             <p className="text-base sm:text-lg text-muted-foreground mb-4">
-              At Peakvisory, your success is our business.
+              In the fast-paced world of scaling a business, financial errors and delays are costly distractions. Our Core Accounting and Bookkeeping services are designed to eliminate the administrative burden, delivering a flawless financial structure you can trust.
             </p>
-            <p className="text-sm sm:text-base text-muted-foreground">
-              We are a dedicated team of accounting professionals committed to helping clients thrive. With years of industry experience, we offer comprehensive accounting and financial guidance tailored to each client's needs. Our mission is simple: support your business so you can focus on what matters most—growth and success.
+            <p className="text-sm sm:text-base text-muted-foreground mb-6">
+              By partnering with us, you immediately gain:
+            </p>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
+                <div>
+                  <p className="font-semibold text-foreground mb-1">Actionable Clarity</p>
+                  <p className="text-sm sm:text-base text-muted-foreground">Move beyond basic reports. Our monthly packages include insightful analysis on key drivers, empowering you to make strategic, data-backed decisions about your future growth.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
+                <div>
+                  <p className="font-semibold text-foreground mb-1">Guaranteed Timeliness</p>
+                  <p className="text-sm sm:text-base text-muted-foreground">Say goodbye to late month-end closes. We commit to a consistent, predictable schedule, ensuring your financial statements are ready when you need them for investors, banks, or board meetings.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
+                <div>
+                  <p className="font-semibold text-foreground mb-1">Reduced Compliance Risk</p>
+                  <p className="text-sm sm:text-base text-muted-foreground">Your entire process is managed by finance professionals who understand current compliance requirements, minimizing the risk of penalties and costly audits.</p>
+                </div>
+              </div>
+            </div>
+            <p className="text-base sm:text-lg text-muted-foreground mt-6 font-medium">
+              Stop wasting time reconciling transactions and start focusing on your company's potential.
             </p>
           </div>
         </div>
@@ -148,52 +199,82 @@ const Index = () => {
       {/* Why Work With Us */}
       <section className="py-12 sm:py-16 bg-muted">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12">Why Work With Us?</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            <Card>
-              <CardContent className="pt-6">
-                <Users className="w-10 h-10 sm:w-12 sm:h-12 text-secondary mb-4" />
-                <h3 className="text-lg sm:text-xl font-semibold mb-2">Personalized Service</h3>
-                <p className="text-sm sm:text-base text-muted-foreground">
-                  We know that no two businesses are alike. Whether you're a small business owner or head of a large corporation, we tailor our solutions to fit your needs.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="pt-6">
-                <Shield className="w-10 h-10 sm:w-12 sm:h-12 text-secondary mb-4" />
-                <h3 className="text-lg sm:text-xl font-semibold mb-2">Expertise You Can Trust</h3>
-                <p className="text-sm sm:text-base text-muted-foreground">
-                  Our highly skilled team brings years of industry knowledge and experience, keeping you informed and compliant.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="pt-6">
-                <Target className="w-10 h-10 sm:w-12 sm:h-12 text-secondary mb-4" />
-                <h3 className="text-lg sm:text-xl font-semibold mb-2">Results-Driven Approach</h3>
-                <p className="text-sm sm:text-base text-muted-foreground">
-                  We don't just crunch numbers—we aim for real results, providing actionable insights to support smarter decision-making.
-                </p>
-              </CardContent>
-            </Card>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 text-center">The Advantage: Why Choose Us Over In-House?</h2>
+          <p className="text-base sm:text-lg text-muted-foreground text-center mb-8 sm:mb-12 max-w-3xl mx-auto">
+            Choosing to outsource your core accounting is a strategic move. Choosing us guarantees higher quality, efficiency, and scalability than traditional alternatives.
+          </p>
+          <div className="overflow-x-auto mb-8">
+            <table className="w-full border-collapse bg-background rounded-lg overflow-hidden shadow-lg">
+              <thead>
+                <tr className="bg-primary text-primary-foreground">
+                  <th className="p-4 text-left font-semibold">Feature</th>
+                  <th className="p-4 text-left font-semibold">Internal Hire</th>
+                  <th className="p-4 text-left font-semibold">Generic Bookkeeper</th>
+                  <th className="p-4 text-left font-semibold bg-secondary text-secondary-foreground">Our Firm</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-border">
+                  <td className="p-4 font-medium">Oversight</td>
+                  <td className="p-4 text-muted-foreground">Limited</td>
+                  <td className="p-4 text-muted-foreground">Minimal</td>
+                  <td className="p-4 font-semibold text-secondary">CPA/CA/Finance Executive Supervision</td>
+                </tr>
+                <tr className="border-b border-border bg-muted/50">
+                  <td className="p-4 font-medium">Scalability</td>
+                  <td className="p-4 text-muted-foreground">Fixed Capacity</td>
+                  <td className="p-4 text-muted-foreground">Hard to Scale Quickly</td>
+                  <td className="p-4 font-semibold text-secondary">Flexibly scales with your growth</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="p-4 font-medium">Cost Model</td>
+                  <td className="p-4 text-muted-foreground">Salary, Benefits, Taxes, Training</td>
+                  <td className="p-4 text-muted-foreground">Hourly or Basic Package</td>
+                  <td className="p-4 font-semibold text-secondary">Predictable, Fixed Monthly Fees</td>
+                </tr>
+                <tr className="bg-muted/50">
+                  <td className="p-4 font-medium">Risk Reduction</td>
+                  <td className="p-4 text-muted-foreground">High risk of single point of failure</td>
+                  <td className="p-4 text-muted-foreground">Variable Quality</td>
+                  <td className="p-4 font-semibold text-secondary">Zero single point of failure; guaranteed accuracy</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+          <p className="text-lg sm:text-xl text-center font-medium text-foreground italic">
+            "We eliminate the cost and hassle of hiring, training, and managing an in-house accounting department while delivering CFO-level expertise to your books."
+          </p>
         </div>
       </section>
 
       {/* Our Services */}
       <section id="services" className="py-12 sm:py-16 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12">Our Services</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6">Our Core Accounting Service Pillars</h2>
+          <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-12 max-w-3xl">
+            We offer a comprehensive suite of services, tailored to create a bulletproof financial backbone for your business.
+          </p>
+          <div className="space-y-8">
             {services.map((service, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardContent className="pt-6">
-                  <TrendingUp className="w-8 h-8 sm:w-10 sm:h-10 text-secondary mb-4" />
-                  <h3 className="text-lg sm:text-xl font-semibold mb-2">{service.title}</h3>
-                  <p className="text-sm sm:text-base text-muted-foreground">{service.description}</p>
+                  <div className="flex items-start gap-4 mb-4">
+                    <TrendingUp className="w-10 h-10 sm:w-12 sm:h-12 text-secondary flex-shrink-0" />
+                    <div>
+                      <h3 className="text-xl sm:text-2xl font-bold mb-2">{index + 1}. {service.title}</h3>
+                      <p className="text-sm sm:text-base text-muted-foreground mb-4">
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
+                  <ul className="space-y-2 ml-4 sm:ml-16">
+                    {service.items.map((item, itemIndex) => (
+                      <li key={itemIndex} className="flex items-start gap-2">
+                        <CheckCircle className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                        <span className="text-sm sm:text-base">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </CardContent>
               </Card>
             ))}
@@ -206,7 +287,7 @@ const Index = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8">Our Commitment</h2>
           <p className="text-base sm:text-lg max-w-4xl opacity-90">
-            At Peakvisory, we pride ourselves on delivering top-tier services. We believe trust takes years to build and only seconds to break, so we strive to exceed your expectations at every turn with reliability and trustworthiness.
+            At GVS Consulting, we pride ourselves on delivering top-tier services. We believe trust takes years to build and only seconds to break, so we strive to exceed your expectations at every turn with reliability and trustworthness.
           </p>
           <p className="text-base sm:text-lg mt-4 opacity-90">
             Ready to see how partnering with us makes all the difference? Let's discuss your financial goals, and we'll craft customized strategies together. Nothing matters more than helping you reach new heights.
@@ -267,13 +348,16 @@ const Index = () => {
       <section className="py-12 sm:py-16 bg-secondary text-secondary-foreground">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6">
-            You, our valued client, are our focus
+            Ready to Gain Financial Confidence?
           </h2>
+          <p className="text-xl sm:text-2xl max-w-2xl mx-auto mb-4 opacity-90 font-semibold">
+            Stop Managing Books, Start Managing Growth.
+          </p>
           <p className="text-base sm:text-lg max-w-2xl mx-auto mb-6 sm:mb-8 opacity-90">
-            We deliver exceptional relationships alongside services. Our focus is to ensure you receive the individualized attention you deserve. You're the key to everything we do.
+            Book Your Free Core Accounting Consultation. We'll discuss your current bottlenecks and design a tailored, transparent solution to streamline your entire financial operation.
           </p>
           <Button size="lg" variant="default" asChild className="w-full sm:w-auto">
-            <Link to="/contact">Contact Us</Link>
+            <Link to="/contact">Book Free Consultation</Link>
           </Button>
         </div>
       </section>
@@ -286,7 +370,7 @@ const Index = () => {
             <Card>
               <CardContent className="pt-6">
                 <p className="text-sm sm:text-base text-muted-foreground italic mb-4">
-                  "Peakvisory helped us transform our financial processes. Their expertise helped us ensure regulatory compliance."
+                  "GVS Consulting helped us transform our financial processes. Their expertise helped us ensure regulatory compliance."
                 </p>
                 <p className="font-semibold text-sm sm:text-base">— Rajesh Kumar</p>
                 <p className="text-xs sm:text-sm text-muted-foreground">CEO, Technology Company</p>
@@ -296,7 +380,7 @@ const Index = () => {
             <Card>
               <CardContent className="pt-6">
                 <p className="text-sm sm:text-base text-muted-foreground italic mb-4">
-                  "Choosing Peakvisory was the best decision for our company. Their team goes above and beyond to ensure we stay ahead with exceptional service."
+                  "Choosing GVS Consulting was the best decision for our company. Their team goes above and beyond to ensure we stay ahead with exceptional service."
                 </p>
                 <p className="font-semibold text-sm sm:text-base">— Priya Sharma</p>
                 <p className="text-xs sm:text-sm text-muted-foreground">Operations Manager, Pvt Ltd</p>
