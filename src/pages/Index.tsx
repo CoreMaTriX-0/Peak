@@ -67,7 +67,7 @@ const Index = () => {
       <Header />
 
       {/* Hero Section */}
-      <section ref={heroRef} className="min-h-screen flex items-center bg-gradient-to-br from-primary via-primary to-primary/90 text-primary-foreground pt-20">
+      <section ref={heroRef} className="min-h-screen flex items-center bg-gradient-to-br from-primary via-primary to-primary/90 text-primary-foreground -mt-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Side - Text Content */}
