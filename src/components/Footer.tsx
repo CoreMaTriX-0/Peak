@@ -4,11 +4,12 @@ import { Mail, Phone, MapPin, Facebook, Linkedin, Instagram } from "lucide-react
 const Footer = () => {
   const quickLinks = [
     { name: "Home", path: "/" },
-    { name: "Who we are", path: "/#who-we-are" },
-    { name: "Our Team", path: "/#our-team" },
-    { name: "Services", path: "/#services" },
+    { name: "Who we are", path: "/who-we-are" },
+    // { name: "Our Team", path: "/#our-team" },
     { name: "Contact", path: "/contact" },
-    { name: "Privacy Policy", path: "/#privacy" },
+    { name: "Blogs", path: "/blog" },
+    { name: "Services", path: "/#services" },
+    // { name: "Privacy Policy", path: "/#privacy" },
   ];
 
   return (

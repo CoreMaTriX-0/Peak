@@ -1,3 +1,4 @@
+/* 
 import { useRef } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -73,7 +74,7 @@ const OurTeam = () => {
     <div className="min-h-screen">
       <Header />
 
-      {/* Hero Section */}
+      {/* Hero Section *\/}
       <section ref={heroRef} className="py-20 bg-gradient-to-br from-primary via-primary to-primary/90 text-primary-foreground">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
@@ -95,7 +96,7 @@ const OurTeam = () => {
         </div>
       </section>
 
-      {/* Team Grid Section */}
+      {/* Team Grid Section *\/}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <ChromaGrid 
@@ -108,7 +109,7 @@ const OurTeam = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section *\/}
       <section className="py-16 bg-secondary text-secondary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Work With Our Expert Team?</h2>
@@ -124,3 +125,4 @@ const OurTeam = () => {
 };
 
 export default OurTeam;
+*/

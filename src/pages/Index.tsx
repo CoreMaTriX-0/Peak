@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 import VariableProximity from "@/components/ui/variable-proximity";
 import CountUp from "@/components/ui/count-up";
 import CardSwap from "@/components/ui/card-swap";
+import { ServicePillars } from "@/components/ServicePillars";
 import { useRef } from "react";
 
 const Index = () => {
-  const whoWeAreRef = useRef<HTMLElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   
   const heroImages = [
@@ -18,48 +18,6 @@ const Index = () => {
     "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=600&fit=crop",
     "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=600&fit=crop",
     "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=600&fit=crop"
-  ];
-  
-  const services = [
-    { 
-      title: "Daily & Transactional Accounting", 
-      description: "The meticulous handling of your daily financial workflow, ensuring every dollar is tracked correctly.",
-      items: [
-        "Accounts Payable (A/P) Management & Vendor Payments",
-        "Accounts Receivable (A/R) & Customer Invoicing",
-        "Daily Bank and Credit Card Reconciliation",
-        "Employee Expense Report Processing & Policy Adherence",
-        "Dedicated Document Management and Secure Data Storage"
-      ]
-    },
-    { 
-      title: "Monthly Financial Close & Reporting", 
-      description: "Turning raw data into strategic insights on a reliable schedule.",
-      items: [
-        "Journal Entry Preparation & General Ledger Maintenance",
-        "Inventory and Fixed Asset Tracking",
-        "Robust Monthly Financial Reporting Package: Including Profit & Loss, Balance Sheet, and Statement of Cash Flows",
-        "Custom Dashboards and Key Performance Indicator (KPI) Tracking",
-        "Executive Summary Narrative highlighting key financial trends and anomalies"
-      ]
-    },
-    { 
-      title: "Compliance & Technology Integration", 
-      description: "Leverage the power of modern technology for seamless, audit-ready operations.",
-      items: [
-        "Seamless Integration with your Existing Tech Stack (e.g., QuickBooks, Xero, Bill.com)",
-        "Sales Tax Filing and Regulatory Compliance (Local, State, and Federal)",
-        "Year-End Preparation and Collaboration with Your Tax CPA"
-      ]
-    },
-  ];
-
-  const values = [
-    "Integrity - Always doing what's right",
-    "Client satisfaction - Your success is our priority",
-    "Innovation - Embracing technology for efficiency",
-    "Professionalism - High quality service delivery",
-    "Transparency - Clear and honest communication",
   ];
 
   return (
@@ -145,56 +103,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Who We Are */}
-      <section id="who-we-are" ref={whoWeAreRef} className="py-12 sm:py-16 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8">
-            <VariableProximity
-              label="We Don't Just Record Data, We Deliver Peace of Mind."
-              fromFontVariationSettings="'wght' 400"
-              toFontVariationSettings="'wght' 900"
-              containerRef={whoWeAreRef}
-              radius={120}
-              falloff="exponential"
-              className="inline-block"
-            />
-          </h2>
-          <div className="prose max-w-4xl">
-            <p className="text-base sm:text-lg text-muted-foreground mb-4">
-              In the fast-paced world of scaling a business, financial errors and delays are costly distractions. Our Core Accounting and Bookkeeping services are designed to eliminate the administrative burden, delivering a flawless financial structure you can trust.
-            </p>
-            <p className="text-sm sm:text-base text-muted-foreground mb-6">
-              By partnering with us, you immediately gain:
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
-                <div>
-                  <p className="font-semibold text-foreground mb-1">Actionable Clarity</p>
-                  <p className="text-sm sm:text-base text-muted-foreground">Move beyond basic reports. Our monthly packages include insightful analysis on key drivers, empowering you to make strategic, data-backed decisions about your future growth.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
-                <div>
-                  <p className="font-semibold text-foreground mb-1">Guaranteed Timeliness</p>
-                  <p className="text-sm sm:text-base text-muted-foreground">Say goodbye to late month-end closes. We commit to a consistent, predictable schedule, ensuring your financial statements are ready when you need them for investors, banks, or board meetings.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
-                <div>
-                  <p className="font-semibold text-foreground mb-1">Reduced Compliance Risk</p>
-                  <p className="text-sm sm:text-base text-muted-foreground">Your entire process is managed by finance professionals who understand current compliance requirements, minimizing the risk of penalties and costly audits.</p>
-                </div>
-              </div>
-            </div>
-            <p className="text-base sm:text-lg text-muted-foreground mt-6 font-medium">
-              Stop wasting time reconciling transactions and start focusing on your company's potential.
-            </p>
-          </div>
-        </div>
-      </section>
+
 
       {/* Why Work With Us */}
       <section className="py-12 sm:py-16 bg-muted">
@@ -247,102 +156,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Our Services */}
-      <section id="services" className="py-12 sm:py-16 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6">Our Core Accounting Service Pillars</h2>
-          <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-12 max-w-3xl">
-            We offer a comprehensive suite of services, tailored to create a bulletproof financial backbone for your business.
-          </p>
-          <div className="space-y-8">
-            {services.map((service, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardContent className="pt-6">
-                  <div className="flex items-start gap-4 mb-4">
-                    <TrendingUp className="w-10 h-10 sm:w-12 sm:h-12 text-secondary flex-shrink-0" />
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-bold mb-2">{index + 1}. {service.title}</h3>
-                      <p className="text-sm sm:text-base text-muted-foreground mb-4">
-                        {service.description}
-                      </p>
-                    </div>
-                  </div>
-                  <ul className="space-y-2 ml-4 sm:ml-16">
-                    {service.items.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                        <span className="text-sm sm:text-base">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Our Commitment */}
-      <section className="py-12 sm:py-16 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8">Our Commitment</h2>
-          <p className="text-base sm:text-lg max-w-4xl opacity-90">
-            At GVS Consulting, we pride ourselves on delivering top-tier services. We believe trust takes years to build and only seconds to break, so we strive to exceed your expectations at every turn with reliability and trustworthness.
-          </p>
-          <p className="text-base sm:text-lg mt-4 opacity-90">
-            Ready to see how partnering with us makes all the difference? Let's discuss your financial goals, and we'll craft customized strategies together. Nothing matters more than helping you reach new heights.
-          </p>
-        </div>
-      </section>
-
-      {/* Our Values */}
-      <section className="py-12 sm:py-16 bg-muted">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12">Our Values</h2>
-          <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8">
-            We are driven by these core principles that shape every decision we make and every client we serve:
-          </p>
-          <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 max-w-4xl">
-            {values.map((value, index) => (
-              <div key={index} className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-accent flex-shrink-0 mt-1" />
-                <p className="text-sm sm:text-base md:text-lg">{value}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Making Clients The Priority */}
-      <section className="py-12 sm:py-16 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6">Making Clients The Priority</h2>
-              <p className="text-base sm:text-lg text-muted-foreground mb-4 sm:mb-6">
-                With 300+ satisfied clients, our client-first approach ensures personalized service every time. We've built trust by going beyond expectations.
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
-                  <span className="text-sm sm:text-base">Proven Success: We've helped over 100 SMEs grow and optimize their financial operations</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
-                  <span className="text-sm sm:text-base">Transparent Approach: Clear communication and honest pricing with no surprises</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
-                  <span className="text-sm sm:text-base">Always Here: Round-the-clock support to address your needs anytime</span>
-                </li>
-              </ul>
-            </div>
-            <div className="bg-secondary/10 h-64 sm:h-80 md:h-96 rounded-lg flex items-center justify-center">
-              <Award className="w-24 h-24 sm:w-32 sm:h-32 text-secondary" />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Our Services - New Animated Version */}
+      <ServicePillars />
 
       {/* CTA Section */}
       <section className="py-12 sm:py-16 bg-secondary text-secondary-foreground">
@@ -365,7 +180,7 @@ const Index = () => {
       {/* Testimonials */}
       <section className="py-12 sm:py-16 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center">What Our Indian Clients Say</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center">Trusted by Growing Businesses</h2>
           <div className="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
             <Card>
               <CardContent className="pt-6">
