@@ -45,6 +45,7 @@ const Dashboard = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [isTabBlocked, setIsTabBlocked] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -264,76 +265,109 @@ const Dashboard = () => {
   };
 
   const exportToCSV = () => {
-    const csvData = messages.map(msg => ({
-      Date: new Date(msg.created_at).toLocaleString(),
-      Name: msg.name,
-      Email: msg.email,
-      Phone: msg.phone,
-      Message: msg.message,
-      Status: msg.status,
-      Notes: msg.notes || ""
-    }));
+    if (isExporting) return;
+    setIsExporting(true);
+    
+    // Defer heavy processing to prevent blocking UI
+    setTimeout(() => {
+      try {
+        const csvData = messages.map(msg => ({
+          Date: new Date(msg.created_at).toLocaleString(),
+          Name: msg.name,
+          Email: msg.email,
+          Phone: msg.phone,
+          Message: msg.message,
+          Status: msg.status,
+          Notes: msg.notes || ""
+        }));
 
-    const headers = ["Date", "Name", "Email", "Phone", "Message", "Status", "Notes"];
-    const csvContent = [
-      headers.join(","),
-      ...csvData.map(row => 
-        headers.map(header => {
-          const value = row[header as keyof typeof row]?.toString() || "";
-          return `"${value.replace(/"/g, '""')}"`;
-        }).join(",")
-      )
-    ].join("\n");
+        const headers = ["Date", "Name", "Email", "Phone", "Message", "Status", "Notes"];
+        const csvContent = [
+          headers.join(","),
+          ...csvData.map(row => 
+            headers.map(header => {
+              const value = row[header as keyof typeof row]?.toString() || "";
+              return `"${value.replace(/"/g, '""')}"`;
+            }).join(",")
+          )
+        ].join("\n");
 
-    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-    const link = document.createElement("a");
-    const url = URL.createObjectURL(blob);
-    link.setAttribute("href", url);
-    link.setAttribute("download", `contact-messages-${new Date().toISOString().split('T')[0]}.csv`);
-    link.style.visibility = "hidden";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+        const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+        const link = document.createElement("a");
+        const url = URL.createObjectURL(blob);
+        link.setAttribute("href", url);
+        link.setAttribute("download", `contact-messages-${new Date().toISOString().split('T')[0]}.csv`);
+        link.style.visibility = "hidden";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
 
-    toast({
-      title: "Export Successful",
-      description: "CSV file has been downloaded",
-    });
+        toast({
+          title: "Export Successful",
+          description: "CSV file has been downloaded",
+        });
+      } catch (error) {
+        toast({
+          title: "Export Failed",
+          description: "An error occurred during export",
+          variant: "destructive",
+        });
+      } finally {
+        setIsExporting(false);
+      }
+    }, 0);
   };
 
   const exportToExcel = () => {
-    const excelData = messages.map(msg => ({
-      Date: new Date(msg.created_at).toLocaleString(),
-      Name: msg.name,
-      Email: msg.email,
-      Phone: msg.phone,
-      Message: msg.message,
-      Status: msg.status,
-      Notes: msg.notes || ""
-    }));
-
-    const worksheet = XLSX.utils.json_to_sheet(excelData);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Contact Messages");
+    if (isExporting) return;
+    setIsExporting(true);
     
-    // Set column widths
-    const maxWidth = 50;
-    worksheet['!cols'] = [
-      { wch: 20 }, // Date
-      { wch: 20 }, // Name
-      { wch: 25 }, // Email
-      { wch: 15 }, // Phone
-      { wch: maxWidth }, // Message
-      { wch: 10 }, // Status
-      { wch: maxWidth }  // Notes
-    ];
+    // Defer heavy processing to prevent blocking UI
+    setTimeout(() => {
+      try {
+        const excelData = messages.map(msg => ({
+          Date: new Date(msg.created_at).toLocaleString(),
+          Name: msg.name,
+          Email: msg.email,
+          Phone: msg.phone,
+          Message: msg.message,
+          Status: msg.status,
+          Notes: msg.notes || ""
+        }));
 
-    XLSX.writeFile(workbook, `contact-messages-${new Date().toISOString().split('T')[0]}.xlsx`);
+        const worksheet = XLSX.utils.json_to_sheet(excelData);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Contact Messages");
+        
+        // Set column widths
+        const maxWidth = 50;
+        worksheet['!cols'] = [
+          { wch: 20 }, // Date
+          { wch: 20 }, // Name
+          { wch: 25 }, // Email
+          { wch: 15 }, // Phone
+          { wch: maxWidth }, // Message
+          { wch: 10 }, // Status
+          { wch: maxWidth }  // Notes
+        ];
 
-    toast({
-      title: "Export Successful",
-      description: "Excel file has been downloaded",
-    });
+        XLSX.writeFile(workbook, `contact-messages-${new Date().toISOString().split('T')[0]}.xlsx`);
+
+        toast({
+          title: "Export Successful",
+          description: "Excel file has been downloaded",
+        });
+      } catch (error) {
+        toast({
+          title: "Export Failed",
+          description: "An error occurred during export",
+          variant: "destructive",
+        });
+      } finally {
+        setIsExporting(false);
+      }
+    }, 0);
   };
 
   const filteredMessages = messages.filter(msg => {
@@ -469,14 +503,14 @@ const Dashboard = () => {
             <p className="text-sm md:text-base text-muted-foreground">Manage and respond to customer inquiries</p>
           </div>
           <div className="flex flex-wrap gap-2">
-            <Button variant="outline" size="sm" onClick={exportToCSV} disabled={messages.length === 0} className="flex-1 sm:flex-none">
+            <Button variant="outline" size="sm" onClick={exportToCSV} disabled={messages.length === 0 || isExporting} className="flex-1 sm:flex-none">
               <Download className="mr-2 h-4 w-4" />
-              <span className="hidden sm:inline">Export CSV</span>
+              <span className="hidden sm:inline">{isExporting ? "Exporting..." : "Export CSV"}</span>
               <span className="sm:hidden">CSV</span>
             </Button>
-            <Button variant="outline" size="sm" onClick={exportToExcel} disabled={messages.length === 0} className="flex-1 sm:flex-none">
+            <Button variant="outline" size="sm" onClick={exportToExcel} disabled={messages.length === 0 || isExporting} className="flex-1 sm:flex-none">
               <Download className="mr-2 h-4 w-4" />
-              <span className="hidden sm:inline">Export Excel</span>
+              <span className="hidden sm:inline">{isExporting ? "Exporting..." : "Export Excel"}</span>
               <span className="sm:hidden">Excel</span>
             </Button>
             <Button variant="outline" size="sm" onClick={handleLogout} className="flex-1 sm:flex-none">
