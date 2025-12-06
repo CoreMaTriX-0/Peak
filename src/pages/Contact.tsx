@@ -253,6 +253,7 @@ const Contact = () => {
                       onChange={handleNameChange}
                       required
                       placeholder="Your full name"
+                      autoComplete="name"
                       className={nameError ? "border-red-500" : ""}
                     />
                     {nameError && (
@@ -270,6 +271,7 @@ const Contact = () => {
                       onChange={handleEmailChange}
                       required
                       placeholder="your@email.com"
+                      autoComplete="email"
                       className={emailError ? "border-red-500" : ""}
                     />
                     {emailError && (
@@ -290,6 +292,7 @@ const Contact = () => {
                           }
                         }}
                         placeholder="+91"
+                        autoComplete="tel-country-code"
                         className="w-[80px]"
                         maxLength={5}
                       />
@@ -302,6 +305,7 @@ const Contact = () => {
                           onChange={handlePhoneChange}
                           required
                           placeholder="10 digit number"
+                          autoComplete="tel-national"
                           maxLength={10}
                           className={phoneError ? "border-red-500" : ""}
                         />

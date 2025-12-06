@@ -425,6 +425,7 @@ const Dashboard = () => {
                   value={loginEmail}
                   onChange={(e) => setLoginEmail(e.target.value)}
                   placeholder="admin@gvsconsulting.com"
+                  autoComplete="email"
                   required
                 />
               </div>
@@ -436,6 +437,7 @@ const Dashboard = () => {
                   value={loginPassword}
                   onChange={(e) => setLoginPassword(e.target.value)}
                   placeholder="••••••••"
+                  autoComplete="current-password"
                   required
                 />
               </div>
