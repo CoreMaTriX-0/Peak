@@ -1,15 +1,43 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle, TrendingUp, Users, Shield, Target, Award, Lightbulb, Zap, Heart, BarChart, Star } from "lucide-react";
+import { CheckCircle, TrendingUp, Users, Shield, Target, Award, Lightbulb, Zap, Heart, BarChart, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import VariableProximity from "@/components/ui/variable-proximity";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const WhoWeAre = () => {
   const heroRef = useRef<HTMLElement>(null);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [isAutoScrollPaused, setIsAutoScrollPaused] = useState(false);
+
+  // Auto-scroll testimonials every 3 seconds
+  useEffect(() => {
+    if (isAutoScrollPaused) return;
+
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isAutoScrollPaused]);
+
+  const handlePrevious = () => {
+    setIsAutoScrollPaused(true);
+    setCurrentTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setIsAutoScrollPaused(true);
+    setCurrentTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleDotClick = (index: number) => {
+    setIsAutoScrollPaused(true);
+    setCurrentTestimonial(index);
+  };
 
   const values = [
     { icon: TrendingUp, title: "Success", description: "Always moving the needle" },
@@ -435,45 +463,95 @@ const WhoWeAre = () => {
         </div>
       </section>
 
-      {/* Testimonials - Horizontal Auto-Scroll */}
-      <section className="py-16 bg-muted overflow-hidden">
-        <div className="container mx-auto px-4 mb-8">
+      {/* Testimonials - Card Swipe */}
+      <section className="py-16 bg-muted">
+        <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="mb-12"
           >
-            <h2 className="text-4xl font-bold text-center mb-4">What Our Indian Clients Say</h2>
-            <p className="text-center text-muted-foreground">Real feedback from our valued clients</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">What Our Indian Clients Say</h2>
+            <p className="text-center text-muted-foreground text-sm sm:text-base">Real feedback from our valued clients</p>
           </motion.div>
-        </div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative"
-        >
-          <div className="flex gap-6 animate-scroll">
-            {[...testimonials, ...testimonials].map((testimonial, index) => (
-              <Card key={index} className="min-w-[400px] flex-shrink-0">
-                <CardContent className="pt-6">
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
-                    ))}
-                  </div>
-                  <p className="text-muted-foreground italic mb-4">"{testimonial.text}"</p>
-                  <div className="border-t pt-4">
-                    <p className="font-semibold">{testimonial.author}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.position}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+
+          <div className="relative max-w-4xl mx-auto">
+            {/* Testimonial Cards with Side Navigation */}
+            <div className="relative h-[300px] sm:h-[280px] md:h-[260px] flex items-center">
+              {/* Previous Button */}
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={handlePrevious}
+                className="absolute left-0 sm:-left-16 z-10 rounded-full shadow-lg hover:shadow-xl transition-all"
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </Button>
+
+              {/* Card Container */}
+              <div className="flex-1 px-12 sm:px-4">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentTestimonial}
+                    initial={{ opacity: 0, x: 100, rotateY: 10 }}
+                    animate={{ opacity: 1, x: 0, rotateY: 0 }}
+                    exit={{ opacity: 0, x: -100, rotateY: -10 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                  >
+                    <Card className="shadow-lg hover:shadow-xl transition-shadow">
+                      <CardContent className="pt-6 sm:pt-8 p-6 sm:p-8 flex flex-col justify-between h-full min-h-[280px]">
+                        <div>
+                          <div className="flex gap-1 mb-4 justify-center">
+                            {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
+                              <Star key={i} className="w-5 h-5 sm:w-6 sm:h-6 fill-amber-400 text-amber-400" />
+                            ))}
+                          </div>
+                          <p className="text-muted-foreground italic mb-6 text-center text-base sm:text-lg leading-relaxed">
+                            "{testimonials[currentTestimonial].text}"
+                          </p>
+                        </div>
+                        <div className="border-t pt-4 text-center">
+                          <p className="font-semibold text-base sm:text-lg">{testimonials[currentTestimonial].author}</p>
+                          <p className="text-sm sm:text-base text-muted-foreground">{testimonials[currentTestimonial].position}</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {/* Next Button */}
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={handleNext}
+                className="absolute right-0 sm:-right-16 z-10 rounded-full shadow-lg hover:shadow-xl transition-all"
+                aria-label="Next testimonial"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </Button>
+            </div>
+
+            {/* Dots Indicator */}
+            <div className="flex justify-center gap-2 mt-8">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleDotClick(index)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    index === currentTestimonial
+                      ? "bg-secondary w-8"
+                      : "bg-secondary/30 hover:bg-secondary/50"
+                  }`}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       <Footer />
