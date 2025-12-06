@@ -6,19 +6,19 @@ import Footer from "@/components/Footer";
 
 // Blog post data (in a real app, this would come from an API or CMS)
 const blogPostsData: Record<string, any> = {
-  "vat-compliance-uae": {
-    title: "Understanding VAT Compliance in UAE",
+  "gst-compliance-india": {
+    title: "Understanding GST Compliance in India",
     category: "Tax & Compliance",
     author: "Sarah Johnson",
     date: "October 15, 2024",
     image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&h=600&fit=crop",
-    excerpt: "Navigate the complexities of VAT regulations in the UAE with our comprehensive guide.",
+    excerpt: "Navigate the complexities of GST regulations in India with our comprehensive guide.",
     content: `
-      <h2>Introduction to VAT in UAE</h2>
-      <p>Value Added Tax (VAT) was introduced in the United Arab Emirates on January 1, 2018, at a standard rate of 5%. This landmark implementation marked a significant shift in the UAE's taxation landscape, requiring businesses to adapt their accounting and compliance procedures.</p>
+      <h2>Introduction to GST in India</h2>
+      <p>Goods and Services Tax (GST) was introduced in India on July 1, 2017, replacing multiple indirect taxes. This landmark implementation marked a significant shift in India's taxation landscape, requiring businesses to adapt their accounting and compliance procedures.</p>
       
       <h2>Key VAT Requirements</h2>
-      <p>Businesses operating in the UAE must understand several critical aspects of VAT compliance:</p>
+      <p>Businesses operating in India must understand several critical aspects of GST compliance:</p>
       
       <h3>1. Registration Threshold</h3>
       <p>Mandatory registration is required for businesses with taxable supplies and imports exceeding AED 375,000 annually. Voluntary registration is available for businesses exceeding AED 187,500.</p>
@@ -55,10 +55,10 @@ const blogPostsData: Record<string, any> = {
       <p>Partner with experienced accounting firms like GVS Consulting to navigate complex scenarios and ensure full compliance.</p>
       
       <h2>Recent Updates and Changes</h2>
-      <p>The UAE's Federal Tax Authority regularly updates VAT guidelines. Recent changes include clarifications on e-commerce transactions, real estate supplies, and digital services.</p>
+      <p>The Indian GST Council regularly updates GST guidelines. Recent changes include clarifications on e-commerce transactions, real estate supplies, and digital services.</p>
       
       <h2>Conclusion</h2>
-      <p>VAT compliance in the UAE requires diligence, proper systems, and ongoing attention to regulatory updates. By implementing robust processes and seeking expert guidance when needed, businesses can maintain compliance while minimizing administrative burden.</p>
+      <p>GST compliance in India requires diligence, proper systems, and ongoing attention to regulatory updates. By implementing robust processes and seeking expert guidance when needed, businesses can maintain compliance while minimizing administrative burden.</p>
       
       <p>At GVS Consulting, our team of tax specialists stays current with all VAT developments to provide you with accurate, timely advice. Contact us today to discuss your VAT compliance needs.</p>
     `

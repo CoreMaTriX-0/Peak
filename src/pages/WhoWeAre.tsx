@@ -27,7 +27,7 @@ const WhoWeAre = () => {
       rating: 5
     },
     {
-      text: "The team's responsiveness and deep knowledge of UAE tax regulations is exceptional. They're always available when we need them.",
+      text: "The team's responsiveness and deep knowledge of Indian tax regulations is exceptional. They're always available when we need them.",
       author: "Fatima Hassan",
       position: "Finance Director, Global Trading Co.",
       rating: 5
@@ -444,7 +444,7 @@ const WhoWeAre = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl font-bold text-center mb-4">What Our UAE Clients Say</h2>
+            <h2 className="text-4xl font-bold text-center mb-4">What Our Indian Clients Say</h2>
             <p className="text-center text-muted-foreground">Real feedback from our valued clients</p>
           </motion.div>
         </div>

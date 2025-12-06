@@ -10,13 +10,13 @@ const Blog = () => {
   const blogPosts: ChromaItem[] = [
     {
       image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&h=600&fit=crop",
-      title: "Understanding VAT Compliance in UAE",
+      title: "Understanding GST Compliance in India",
       subtitle: "Tax & Compliance",
       handle: "Read More →",
-      location: "Navigate the complexities of VAT regulations in the UAE with our comprehensive guide. Learn about filing requirements, common mistakes to avoid, and best practices for maintaining compliance.",
+      location: "Navigate the complexities of GST regulations in India with our comprehensive guide. Learn about filing requirements, common mistakes to avoid, and best practices for maintaining compliance.",
       borderColor: "#4F46E5",
       gradient: "linear-gradient(145deg, #4F46E5, #1e3a8a)",
-      url: "/blog/vat-compliance-uae"
+      url: "/blog/gst-compliance-india"
     },
     {
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
@@ -70,13 +70,13 @@ const Blog = () => {
     },
     {
       image: "https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?w=800&h=600&fit=crop",
-      title: "Understanding Corporate Tax in UAE",
+      title: "Understanding Corporate Tax in India",
       subtitle: "Tax & Compliance",
       handle: "Read More →",
-      location: "Get up to speed with the UAE's Corporate Tax regime. Learn about tax rates, exemptions, registration requirements, and how to prepare your business for compliance.",
+      location: "Get up to speed with India's Corporate Tax regime. Learn about tax rates, exemptions, registration requirements, and how to prepare your business for compliance.",
       borderColor: "#EC4899",
       gradient: "linear-gradient(160deg, #EC4899, #9d174d)",
-      url: "/blog/corporate-tax-uae"
+      url: "/blog/corporate-tax-india"
     },
     {
       image: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&h=600&fit=crop",
