@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { supabase, isSupabaseConfigured } from "@/lib/supabase";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import VariableProximity from "@/components/ui/variable-proximity";
@@ -15,21 +16,138 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    countryCode: "+91",
     phone: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [phoneError, setPhoneError] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you soon.",
-    });
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    
+    // Validate name
+    if (formData.name.trim().length < 2) {
+      setNameError("Name must be at least 2 characters");
+      return;
+    }
+    if (!/^[a-zA-Z\s]+$/.test(formData.name)) {
+      setNameError("Name can only contain letters and spaces");
+      return;
+    }
+    
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setEmailError("Please enter a valid email address");
+      return;
+    }
+    
+    // Validate phone number
+    if (formData.phone.length !== 10) {
+      setPhoneError("Phone number must be exactly 10 digits");
+      return;
+    }
+    
+    setIsSubmitting(true);
+
+    try {
+      // Check if Supabase is configured
+      if (!isSupabaseConfigured) {
+        console.warn('Supabase not configured - form data:', formData);
+        toast({
+          title: "Demo Mode",
+          description: "Supabase is not configured yet. See console for form data.",
+        });
+        setFormData({ name: "", email: "", countryCode: "+91", phone: "", message: "" });
+        setIsSubmitting(false);
+        return;
+      }
+
+      const { error } = await supabase
+        .from("contact_messages")
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            phone: `${formData.countryCode} ${formData.phone}`,
+            message: formData.message,
+            status: "new",
+          },
+        ]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Message Sent Successfully!",
+        description: "Thank you for contacting us. We'll get back to you within 24 hours.",
+      });
+      
+      setFormData({ name: "", email: "", countryCode: "+91", phone: "", message: "" });
+      setPhoneError("");
+      setNameError("");
+      setEmailError("");
+    } catch (error: any) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Error Sending Message",
+        description: error.message || "Please try again later or contact us directly via email/phone.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setFormData({ ...formData, name: value });
+    
+    if (value.trim().length === 0) {
+      setNameError("");
+    } else if (value.trim().length < 2) {
+      setNameError("Name must be at least 2 characters");
+    } else if (!/^[a-zA-Z\s]+$/.test(value)) {
+      setNameError("Name can only contain letters and spaces");
+    } else {
+      setNameError("");
+    }
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setFormData({ ...formData, email: value });
+    
+    if (value.trim().length === 0) {
+      setEmailError("");
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(value)) {
+        setEmailError("Please enter a valid email address");
+      } else {
+        setEmailError("");
+      }
+    }
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, ""); // Remove non-digits
+    if (value.length <= 10) {
+      setFormData({ ...formData, phone: value });
+      if (value.length === 10) {
+        setPhoneError("");
+      } else if (value.length > 0) {
+        setPhoneError(`${10 - value.length} more digit${10 - value.length !== 1 ? 's' : ''} required`);
+      } else {
+        setPhoneError("");
+      }
+    }
   };
 
   return (
@@ -132,10 +250,14 @@ const Contact = () => {
                       id="name"
                       name="name"
                       value={formData.name}
-                      onChange={handleChange}
+                      onChange={handleNameChange}
                       required
                       placeholder="Your full name"
+                      className={nameError ? "border-red-500" : ""}
                     />
+                    {nameError && (
+                      <p className="text-xs text-red-500 mt-1">{nameError}</p>
+                    )}
                   </div>
 
                   <div className="space-y-2">
@@ -145,23 +267,49 @@ const Contact = () => {
                       name="email"
                       type="email"
                       value={formData.email}
-                      onChange={handleChange}
+                      onChange={handleEmailChange}
                       required
                       placeholder="your@email.com"
+                      className={emailError ? "border-red-500" : ""}
                     />
+                    {emailError && (
+                      <p className="text-xs text-red-500 mt-1">{emailError}</p>
+                    )}
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone Number *</Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      required
-                      placeholder="+971 XX XXX XXXX"
-                    />
+                    <div className="flex gap-2">
+                      <Input
+                        name="countryCode"
+                        value={formData.countryCode}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          if (value === '' || value === '+' || /^\+\d{0,4}$/.test(value)) {
+                            setFormData({ ...formData, countryCode: value });
+                          }
+                        }}
+                        placeholder="+91"
+                        className="w-[80px]"
+                        maxLength={5}
+                      />
+                      <div className="flex-1">
+                        <Input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={handlePhoneChange}
+                          required
+                          placeholder="10 digit number"
+                          maxLength={10}
+                          className={phoneError ? "border-red-500" : ""}
+                        />
+                        {phoneError && (
+                          <p className="text-xs text-red-500 mt-1">{phoneError}</p>
+                        )}
+                      </div>
+                    </div>
                   </div>
 
                   <div className="space-y-2">
@@ -177,9 +325,9 @@ const Contact = () => {
                     />
                   </div>
 
-                  <Button type="submit" className="w-full" size="lg">
+                  <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
                     <Send className="w-4 h-4 mr-2" />
-                    Send Message
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
               </div>
