@@ -23,7 +23,7 @@ const Header = () => {
             <img
               src="/logo.jpg"
               alt="GVS Consulting - Delivering on the Promise"
-              className="h-12 w-auto object-contain"
+              className="h-10 sm:h-12 w-auto object-contain"
             />
           </Link>
 

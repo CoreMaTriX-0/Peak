@@ -25,9 +25,9 @@ const Index = () => {
       <Header />
 
       {/* Hero Section */}
-      <section ref={heroRef} className="min-h-screen flex items-center bg-gradient-to-br from-primary via-primary to-primary/90 text-primary-foreground -mt-8">
+      <section ref={heroRef} className="min-h-[90vh] md:min-h-screen flex items-center bg-gradient-to-br from-primary via-primary to-primary/90 text-primary-foreground py-8 md:py-0 -mt-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
             {/* Left Side - Text Content */}
             <div className="animate-fade-in">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
@@ -42,7 +42,8 @@ const Index = () => {
                 />
               </h1>
               <p className="text-base sm:text-lg md:text-xl mb-3 sm:mb-4 opacity-90">
-                Accurate Books | On-Time Reports | Zero Headaches<br />
+                <span className="hidden sm:inline">Accurate Books | On-Time Reports | Zero Headaches<br /></span>
+                <span className="sm:hidden">Accurate Books · On-Time Reports<br />Zero Headaches<br /></span>
                 Your Reliable Finance Foundation.
               </p>
               <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 opacity-90">
@@ -54,7 +55,7 @@ const Index = () => {
             </div>
             
             {/* Right Side - Animated Image */}
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center mt-6 md:mt-0">
               <CardSwap 
                 images={heroImages}
                 width={500}
@@ -65,7 +66,7 @@ const Index = () => {
                 pauseOnHover={false}
                 skewAmount={5}
                 easing="elastic"
-                className="w-full max-w-md lg:max-w-none"
+                className="w-full max-w-sm sm:max-w-md lg:max-w-none scale-90 sm:scale-100"
               />
             </div>
           </div>
@@ -79,8 +80,9 @@ const Index = () => {
           <p className="text-base sm:text-lg text-muted-foreground text-center mb-8 sm:mb-12 max-w-3xl mx-auto">
             Choosing to outsource your core accounting is a strategic move. Choosing us guarantees higher quality, efficiency, and scalability than traditional alternatives.
           </p>
-          <div className="overflow-x-auto mb-8">
-            <table className="w-full border-collapse bg-background rounded-lg overflow-hidden shadow-lg">
+          <div className="overflow-x-auto mb-8 -mx-4 sm:mx-0">
+            <div className="inline-block min-w-full align-middle">
+            <table className="w-full border-collapse bg-background rounded-lg overflow-hidden shadow-lg min-w-[640px]">
               <thead>
                 <tr className="bg-primary text-primary-foreground">
                   <th className="p-4 text-left font-semibold">Feature</th>
@@ -116,6 +118,7 @@ const Index = () => {
                 </tr>
               </tbody>
             </table>
+            </div>
           </div>
           <p className="text-lg sm:text-xl text-center font-medium text-foreground italic">
             "We eliminate the cost and hassle of hiring, training, and managing an in-house accounting department while delivering CFO-level expertise to your books."
