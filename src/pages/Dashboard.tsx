@@ -462,50 +462,52 @@ const Dashboard = () => {
     <div className="min-h-screen flex flex-col bg-muted/30">
       <Header />
 
-      <main className="flex-1 container mx-auto px-4 py-8">
-        <div className="flex justify-between items-center mb-8">
+      <main className="flex-1 container mx-auto px-4 py-4 md:py-8">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6 md:mb-8">
           <div>
-            <h1 className="text-3xl font-bold mb-2">Contact Messages Dashboard</h1>
-            <p className="text-muted-foreground">Manage and respond to customer inquiries</p>
+            <h1 className="text-2xl md:text-3xl font-bold mb-1 md:mb-2">Contact Messages Dashboard</h1>
+            <p className="text-sm md:text-base text-muted-foreground">Manage and respond to customer inquiries</p>
           </div>
-          <div className="flex gap-2">
-            <Button variant="outline" onClick={exportToCSV} disabled={messages.length === 0}>
+          <div className="flex flex-wrap gap-2">
+            <Button variant="outline" size="sm" onClick={exportToCSV} disabled={messages.length === 0} className="flex-1 sm:flex-none">
               <Download className="mr-2 h-4 w-4" />
-              Export CSV
+              <span className="hidden sm:inline">Export CSV</span>
+              <span className="sm:hidden">CSV</span>
             </Button>
-            <Button variant="outline" onClick={exportToExcel} disabled={messages.length === 0}>
+            <Button variant="outline" size="sm" onClick={exportToExcel} disabled={messages.length === 0} className="flex-1 sm:flex-none">
               <Download className="mr-2 h-4 w-4" />
-              Export Excel
+              <span className="hidden sm:inline">Export Excel</span>
+              <span className="sm:hidden">Excel</span>
             </Button>
-            <Button variant="outline" onClick={handleLogout}>
+            <Button variant="outline" size="sm" onClick={handleLogout} className="flex-1 sm:flex-none">
               <LogOut className="mr-2 h-4 w-4" />
               Logout
             </Button>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
           <Card>
-            <CardContent className="pt-6">
-              <div className="text-2xl font-bold">{statusCounts.total}</div>
+            <CardContent className="pt-4 md:pt-6">
+              <div className="text-xl md:text-2xl font-bold">{statusCounts.total}</div>
               <p className="text-xs text-muted-foreground">Total Messages</p>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="pt-6">
-              <div className="text-2xl font-bold text-blue-600">{statusCounts.new}</div>
+            <CardContent className="pt-4 md:pt-6">
+              <div className="text-xl md:text-2xl font-bold text-blue-600">{statusCounts.new}</div>
               <p className="text-xs text-muted-foreground">New Messages</p>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="pt-6">
-              <div className="text-2xl font-bold text-yellow-600">{statusCounts.read}</div>
+            <CardContent className="pt-4 md:pt-6">
+              <div className="text-xl md:text-2xl font-bold text-yellow-600">{statusCounts.read}</div>
               <p className="text-xs text-muted-foreground">Read Messages</p>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="pt-6">
-              <div className="text-2xl font-bold text-green-600">{statusCounts.replied}</div>
+            <CardContent className="pt-4 md:pt-6">
+              <div className="text-xl md:text-2xl font-bold text-green-600">{statusCounts.replied}</div>
               <p className="text-xs text-muted-foreground">Replied</p>
             </CardContent>
           </Card>
@@ -548,28 +550,66 @@ const Dashboard = () => {
                 No messages found
               </div>
             ) : (
-              <div className="overflow-x-auto">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Date</TableHead>
-                      <TableHead>Name</TableHead>
-                      <TableHead>Email</TableHead>
-                      <TableHead>Phone</TableHead>
-                      <TableHead>Status</TableHead>
-                      <TableHead className="text-right">Actions</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {filteredMessages.map((message) => (
-                      <TableRow key={message.id}>
-                        <TableCell className="whitespace-nowrap">
-                          {new Date(message.created_at).toLocaleDateString()}
-                        </TableCell>
-                        <TableCell className="font-medium">{message.name}</TableCell>
-                        <TableCell>{message.email}</TableCell>
-                        <TableCell>{message.phone}</TableCell>
-                        <TableCell>
+              <>
+                {/* Desktop Table View */}
+                <div className="hidden md:block overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Date</TableHead>
+                        <TableHead>Name</TableHead>
+                        <TableHead>Email</TableHead>
+                        <TableHead>Phone</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead className="text-right">Actions</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {filteredMessages.map((message) => (
+                        <TableRow key={message.id}>
+                          <TableCell className="whitespace-nowrap">
+                            {new Date(message.created_at).toLocaleDateString()}
+                          </TableCell>
+                          <TableCell className="font-medium">{message.name}</TableCell>
+                          <TableCell>{message.email}</TableCell>
+                          <TableCell>{message.phone}</TableCell>
+                          <TableCell>
+                            <Badge
+                              variant={
+                                message.status === "new" ? "default" :
+                                message.status === "read" ? "secondary" :
+                                "outline"
+                              }
+                            >
+                              {message.status}
+                            </Badge>
+                          </TableCell>
+                          <TableCell className="text-right">
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => openMessageDialog(message)}
+                            >
+                              <Eye className="h-4 w-4 mr-2" />
+                              View
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+
+                {/* Mobile Card View */}
+                <div className="md:hidden space-y-4">
+                  {filteredMessages.map((message) => (
+                    <Card key={message.id} className="cursor-pointer hover:bg-muted/50" onClick={() => openMessageDialog(message)}>
+                      <CardContent className="pt-4">
+                        <div className="flex justify-between items-start mb-3">
+                          <div className="flex-1">
+                            <h3 className="font-semibold text-base mb-1">{message.name}</h3>
+                            <p className="text-sm text-muted-foreground">{message.email}</p>
+                          </div>
                           <Badge
                             variant={
                               message.status === "new" ? "default" :
@@ -579,29 +619,36 @@ const Dashboard = () => {
                           >
                             {message.status}
                           </Badge>
-                        </TableCell>
-                        <TableCell className="text-right">
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => openMessageDialog(message)}
-                          >
-                            <Eye className="h-4 w-4 mr-2" />
-                            View
-                          </Button>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
+                        </div>
+                        <div className="flex justify-between items-center text-xs text-muted-foreground">
+                          <span>{message.phone}</span>
+                          <span>{new Date(message.created_at).toLocaleDateString()}</span>
+                        </div>
+                        <p className="text-sm mt-2 line-clamp-2 text-muted-foreground">{message.message}</p>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="w-full mt-3"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            openMessageDialog(message);
+                          }}
+                        >
+                          <Eye className="h-4 w-4 mr-2" />
+                          View Details
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </>
             )}
           </CardContent>
         </Card>
       </main>
 
       <Dialog open={!!selectedMessage} onOpenChange={() => setSelectedMessage(null)}>
-        <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+        <DialogContent className="max-w-2xl max-h-[85vh] sm:max-h-[80vh] overflow-y-auto mx-4">
           <DialogHeader>
             <DialogTitle>Message Details</DialogTitle>
             <DialogDescription>
