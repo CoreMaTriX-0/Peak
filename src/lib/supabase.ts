@@ -1,23 +1,28 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://placeholder.supabase.co';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBsYWNlaG9sZGVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDUxOTI4MDAsImV4cCI6MTk2MDc2ODgwMH0.placeholder';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 
-// Check if credentials are configured
+// Check if credentials are configured (more lenient check for production)
 export const isSupabaseConfigured = 
-  import.meta.env.VITE_SUPABASE_URL && 
-  import.meta.env.VITE_SUPABASE_ANON_KEY &&
-  !import.meta.env.VITE_SUPABASE_URL.includes('your_supabase') &&
-  !import.meta.env.VITE_SUPABASE_URL.includes('placeholder');
+  supabaseUrl.length > 0 && 
+  supabaseAnonKey.length > 0 &&
+  supabaseUrl.includes('supabase.co') &&
+  supabaseAnonKey.startsWith('eyJ');
 
 if (!isSupabaseConfigured) {
   console.warn(
-    '⚠️ Supabase not configured. Please set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in .env.local\n' +
+    '⚠️ Supabase not configured. Please set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY\n' +
+    `URL: ${supabaseUrl ? 'Set ✓' : 'Missing ✗'}\n` +
+    `Key: ${supabaseAnonKey ? 'Set ✓' : 'Missing ✗'}\n` +
     'See QUICK_START.md for setup instructions.'
   );
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = createClient(
+  supabaseUrl || 'https://placeholder.supabase.co',
+  supabaseAnonKey || 'placeholder'
+);
 
 // Database types
 export type ContactMessage = {
