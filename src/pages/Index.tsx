@@ -72,39 +72,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Stats Counter Section */}
-      <section className="py-12 sm:py-16 bg-muted">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto">
-            {/* Clients Counter */}
-            <div className="text-center p-4 sm:p-6">
-              <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-primary mb-2">
-                <CountUp to={300} duration={2.5} suffix="+" />
-              </div>
-              <p className="text-base sm:text-lg text-muted-foreground font-medium">Satisfied Clients</p>
-            </div>
-
-            {/* Projects Counter */}
-            <div className="text-center p-4 sm:p-6">
-              <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-secondary mb-2">
-                <CountUp to={500} duration={2.5} suffix="+" />
-              </div>
-              <p className="text-base sm:text-lg text-muted-foreground font-medium">Projects Completed</p>
-            </div>
-
-            {/* Accountants Counter */}
-            <div className="text-center p-4 sm:p-6 sm:col-span-2 md:col-span-1">
-              <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-accent mb-2">
-                <CountUp to={15} duration={2} suffix="+" />
-              </div>
-              <p className="text-base sm:text-lg text-muted-foreground font-medium">Qualified Accountants</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-
       {/* Why Work With Us */}
       <section className="py-12 sm:py-16 bg-muted">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

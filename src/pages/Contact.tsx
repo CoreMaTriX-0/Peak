@@ -88,8 +88,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">Phone</h3>
-                      <a href="tel:+971123456789" className="text-muted-foreground hover:text-secondary">
-                        +971 12 345 6789
+                      <a href="tel:+919478770034" className="text-muted-foreground hover:text-secondary">
+                        +91 94787 70034
                       </a>
                     </div>
                   </div>
@@ -101,8 +101,7 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold mb-1">Office Address</h3>
                       <p className="text-muted-foreground">
-                        Business Bay, Dubai<br />
-                        United Arab Emirates
+                        Next57 Coworking Space Industrial Area Chandigarh
                       </p>
                     </div>
                   </div>
@@ -184,6 +183,40 @@ const Contact = () => {
                   </Button>
                 </form>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Google Maps Section */}
+        <section className="bg-muted">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4">Find Us Here</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
+                Visit our office at Next57 Coworking Space in Industrial Area, Chandigarh
+              </p>
+              <Button size="lg" asChild>
+                <a 
+                  href="https://www.google.com/maps/dir/?api=1&destination=Next57+Coworking+Space+Industrial+Area+Chandigarh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MapPin className="w-4 h-4 mr-2" />
+                  Get Directions
+                </a>
+              </Button>
+            </div>
+            <div className="w-full h-[400px] md:h-[500px] rounded-lg overflow-hidden shadow-lg border border-border">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3429.9999999999995!2d76.77!3d30.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDQzJzEyLjAiTiA3NsKwNDYnMTIuMCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Office Location - Next57 Coworking Space Industrial Area Chandigarh"
+              />
             </div>
           </div>
         </section>

@@ -51,13 +51,13 @@ const Footer = () => {
               </div>
               <div className="flex items-start gap-2 text-xs sm:text-sm opacity-80">
                 <Phone className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <a href="tel:+919876543210" className="hover:opacity-100">
-                  +91 98765 43210
+                <a href="tel:+919478770034" className="hover:opacity-100">
+                  +91 94787 70034
                 </a>
               </div>
               <div className="flex items-start gap-2 text-xs sm:text-sm opacity-80">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>Connaught Place, New Delhi, India</span>
+                <span>Next57 Coworking Space Industrial Area Chandigarh</span>
               </div>
             </div>
 
