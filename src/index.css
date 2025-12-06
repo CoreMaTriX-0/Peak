@@ -133,3 +133,74 @@ All colors MUST be HSL.
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
+
+/* Mobile landscape mode optimizations */
+@media (max-height: 500px) and (orientation: landscape) {
+  /* Reduce vertical spacing in landscape */
+  .py-12, .py-16, .py-20, .py-24, .py-28 {
+    @apply py-6 !important;
+  }
+  
+  /* Compact hero sections */
+  .min-h-screen, .min-h-\[90vh\] {
+    min-height: auto !important;
+    @apply py-8 !important;
+  }
+  
+  /* Reduce header height */
+  header .h-20 {
+    @apply h-16 !important;
+  }
+  
+  /* Compact text sizes */
+  h1 {
+    @apply text-2xl sm:text-3xl !important;
+  }
+  
+  h2 {
+    @apply text-xl sm:text-2xl !important;
+  }
+  
+  h3 {
+    @apply text-lg sm:text-xl !important;
+  }
+  
+  /* Reduce margins and padding */
+  .mb-6, .mb-8, .mb-12 {
+    @apply mb-3 !important;
+  }
+  
+  .mt-6, .mt-8, .mt-12 {
+    @apply mt-3 !important;
+  }
+  
+  /* Make grids single column in landscape */
+  .grid.md\:grid-cols-2 {
+    @apply grid-cols-1 gap-4 !important;
+  }
+  
+  /* Compact cards */
+  .space-y-6, .space-y-8 {
+    @apply space-y-3 !important;
+  }
+  
+  /* Reduce button sizes */
+  .button, button {
+    @apply py-2 px-4 text-sm !important;
+  }
+  
+  /* Hide decorative images in landscape to save space */
+  .animate-float, .card-swap {
+    @apply hidden !important;
+  }
+  
+  /* Compact form inputs */
+  input, textarea, select {
+    @apply py-2 text-sm !important;
+  }
+  
+  /* Reduce gap between sections */
+  section + section {
+    @apply mt-0 !important;
+  }
+}
