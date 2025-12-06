@@ -44,12 +44,57 @@ const Dashboard = () => {
   const [authLoading, setAuthLoading] = useState(true);
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const [isTabBlocked, setIsTabBlocked] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
 
   useEffect(() => {
-    checkAuth();
+    // Single tab enforcement
+    const DASHBOARD_CHANNEL = 'dashboard_single_tab';
+    const channel = new BroadcastChannel(DASHBOARD_CHANNEL);
+    const tabId = Math.random().toString(36).substring(7);
+    
+    // Check if another tab is already open
+    let isActive = true;
+    
+    // Listen for other tabs
+    channel.onmessage = (event) => {
+      if (event.data.type === 'ping' && event.data.tabId !== tabId) {
+        // Another tab is active
+        setIsTabBlocked(true);
+        isActive = false;
+      } else if (event.data.type === 'pong') {
+        // Respond to ping
+        channel.postMessage({ type: 'ping', tabId });
+      }
+    };
+    
+    // Announce this tab's presence
+    channel.postMessage({ type: 'ping', tabId });
+    
+    // Request pong from other tabs
+    channel.postMessage({ type: 'pong' });
+    
+    // Set a timeout to check if we got a response
+    const timeout = setTimeout(() => {
+      if (isActive) {
+        // No other tab responded, we're good
+        setIsTabBlocked(false);
+      }
+    }, 100);
+    
+    // Cleanup
+    return () => {
+      clearTimeout(timeout);
+      channel.close();
+    };
   }, []);
+
+  useEffect(() => {
+    if (!isTabBlocked) {
+      checkAuth();
+    }
+  }, [isTabBlocked]);
 
   const checkAuth = async () => {
     if (!isSupabaseConfigured) {
@@ -290,6 +335,32 @@ const Dashboard = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <Loader2 className="w-8 h-8 animate-spin text-secondary" />
+      </div>
+    );
+  }
+
+  if (isTabBlocked) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-muted/30 p-4">
+        <Card className="w-full max-w-2xl">
+          <CardHeader>
+            <CardTitle className="text-2xl">🚫 Dashboard Already Open</CardTitle>
+            <CardDescription>Only one dashboard tab can be open at a time</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-sm text-muted-foreground">
+              The dashboard is already open in another tab or window. Please close the other tab to access the dashboard here.
+            </p>
+            <div className="flex gap-3">
+              <Button variant="outline" onClick={() => window.location.reload()}>
+                Retry
+              </Button>
+              <Button variant="outline" onClick={() => navigate('/')}>
+                Back to Home
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     );
   }
