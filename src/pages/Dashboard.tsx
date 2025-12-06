@@ -103,13 +103,31 @@ const Dashboard = () => {
     }
 
     try {
+      // Check sessionStorage first (persists on refresh but not on browser close)
+      const isSessionActive = sessionStorage.getItem('dashboard_auth') === 'true';
+      
+      if (!isSessionActive) {
+        // No active session in sessionStorage, logout
+        await supabase.auth.signOut();
+        setIsAuthenticated(false);
+        setAuthLoading(false);
+        return;
+      }
+
       const { data: { session } } = await supabase.auth.getSession();
-      setIsAuthenticated(!!session);
+      
       if (session) {
+        setIsAuthenticated(true);
         fetchMessages();
+      } else {
+        // Supabase session expired, clear sessionStorage
+        sessionStorage.removeItem('dashboard_auth');
+        setIsAuthenticated(false);
       }
     } catch (error) {
       console.error("Auth check error:", error);
+      sessionStorage.removeItem('dashboard_auth');
+      setIsAuthenticated(false);
     } finally {
       setAuthLoading(false);
     }
@@ -128,6 +146,8 @@ const Dashboard = () => {
       if (error) throw error;
 
       if (data.session) {
+        // Store session in sessionStorage (clears when browser closes)
+        sessionStorage.setItem('dashboard_auth', 'true');
         setIsAuthenticated(true);
         toast({
           title: "Login Successful",
@@ -148,6 +168,7 @@ const Dashboard = () => {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
+    sessionStorage.removeItem('dashboard_auth');
     setIsAuthenticated(false);
     setMessages([]);
     toast({
