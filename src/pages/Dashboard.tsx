@@ -50,45 +50,60 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Single tab enforcement
+    // Single tab enforcement with optimized message handling
     const DASHBOARD_CHANNEL = 'dashboard_single_tab';
-    const channel = new BroadcastChannel(DASHBOARD_CHANNEL);
+    let channel: BroadcastChannel | null = null;
     const tabId = Math.random().toString(36).substring(7);
     
-    // Check if another tab is already open
-    let isActive = true;
-    
-    // Listen for other tabs
-    channel.onmessage = (event) => {
-      if (event.data.type === 'ping' && event.data.tabId !== tabId) {
-        // Another tab is active
-        setIsTabBlocked(true);
-        isActive = false;
-      } else if (event.data.type === 'pong') {
-        // Respond to ping
-        channel.postMessage({ type: 'ping', tabId });
-      }
-    };
-    
-    // Announce this tab's presence
-    channel.postMessage({ type: 'ping', tabId });
-    
-    // Request pong from other tabs
-    channel.postMessage({ type: 'pong' });
-    
-    // Set a timeout to check if we got a response
-    const timeout = setTimeout(() => {
-      if (isActive) {
-        // No other tab responded, we're good
-        setIsTabBlocked(false);
-      }
-    }, 100);
-    
-    // Cleanup
-    return () => {
-      clearTimeout(timeout);
-      channel.close();
-    };
+    try {
+      channel = new BroadcastChannel(DASHBOARD_CHANNEL);
+      
+      // Check if another tab is already open
+      let isActive = true;
+      let messageTimeout: NodeJS.Timeout | null = null;
+      
+      // Debounced message handler to prevent performance issues
+      channel.onmessage = (event) => {
+        if (messageTimeout) clearTimeout(messageTimeout);
+        
+        messageTimeout = setTimeout(() => {
+          if (event.data.type === 'ping' && event.data.tabId !== tabId) {
+            // Another tab is active
+            setIsTabBlocked(true);
+            isActive = false;
+          } else if (event.data.type === 'pong') {
+            // Respond to ping
+            channel?.postMessage({ type: 'ping', tabId });
+          }
+        }, 10); // 10ms debounce
+      };
+      
+      // Announce this tab's presence
+      channel.postMessage({ type: 'ping', tabId });
+      
+      // Request pong from other tabs
+      channel.postMessage({ type: 'pong' });
+      
+      // Set a timeout to check if we got a response
+      const timeout = setTimeout(() => {
+        if (isActive) {
+          // No other tab responded, we're good
+          setIsTabBlocked(false);
+        }
+      }, 100);
+      
+      // Cleanup
+      return () => {
+        if (messageTimeout) clearTimeout(messageTimeout);
+        clearTimeout(timeout);
+        channel?.close();
+      };
+    } catch (error) {
+      console.warn('BroadcastChannel not available:', error);
+      // If BroadcastChannel fails, just allow the tab
+      setIsTabBlocked(false);
+      return () => {};
+    }
   }, []);
 
   useEffect(() => {
@@ -105,7 +120,13 @@ const Dashboard = () => {
 
     try {
       // Check sessionStorage first (persists on refresh but not on browser close)
-      const isSessionActive = sessionStorage.getItem('dashboard_auth') === 'true';
+      let isSessionActive = false;
+      try {
+        isSessionActive = sessionStorage.getItem('dashboard_auth') === 'true';
+      } catch (storageError) {
+        console.warn('Session storage not available:', storageError);
+        // If storage blocked, check Supabase session directly
+      }
       
       if (!isSessionActive) {
         // No active session in sessionStorage, logout
@@ -122,12 +143,20 @@ const Dashboard = () => {
         fetchMessages();
       } else {
         // Supabase session expired, clear sessionStorage
-        sessionStorage.removeItem('dashboard_auth');
+        try {
+          sessionStorage.removeItem('dashboard_auth');
+        } catch {
+          // Silently fail if storage blocked
+        }
         setIsAuthenticated(false);
       }
     } catch (error) {
       console.error("Auth check error:", error);
-      sessionStorage.removeItem('dashboard_auth');
+      try {
+        sessionStorage.removeItem('dashboard_auth');
+      } catch {
+        // Silently fail if storage blocked
+      }
       setIsAuthenticated(false);
     } finally {
       setAuthLoading(false);
@@ -148,7 +177,12 @@ const Dashboard = () => {
 
       if (data.session) {
         // Store session in sessionStorage (clears when browser closes)
-        sessionStorage.setItem('dashboard_auth', 'true');
+        try {
+          sessionStorage.setItem('dashboard_auth', 'true');
+        } catch (storageError) {
+          console.warn('Could not set session storage:', storageError);
+          // Continue anyway - Supabase session will work
+        }
         setIsAuthenticated(true);
         toast({
           title: "Login Successful",
@@ -169,7 +203,11 @@ const Dashboard = () => {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    sessionStorage.removeItem('dashboard_auth');
+    try {
+      sessionStorage.removeItem('dashboard_auth');
+    } catch {
+      // Silently fail if storage blocked
+    }
     setIsAuthenticated(false);
     setMessages([]);
     toast({
