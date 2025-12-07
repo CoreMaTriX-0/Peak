@@ -10,93 +10,33 @@ const Blog = () => {
   const blogPosts: ChromaItem[] = [
     {
       image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&h=600&fit=crop",
-      title: "Understanding GST Compliance in India",
-      subtitle: "Tax & Compliance",
+      title: "Streamlining Your Accounts Payable (AP) Processing",
+      subtitle: "Accounts Payable",
       handle: "Read More →",
-      location: "Navigate the complexities of GST regulations in India with our comprehensive guide. Learn about filing requirements, common mistakes to avoid, and best practices for maintaining compliance.",
+      location: "Accounts Payable (AP) processing is the backbone of your supplier relationships and a key indicator of your cash flow health. Learn the 5 key steps in the AP process and top 4 tips for a tighter AP system to transform this function from a bottleneck into a strategic advantage.",
       borderColor: "#4F46E5",
       gradient: "linear-gradient(145deg, #4F46E5, #1e3a8a)",
-      url: "/blog/gst-compliance-india"
+      url: "/blog/streamlining-accounts-payable"
     },
     {
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-      title: "The Benefits of Cloud-Based Accounting",
-      subtitle: "Technology & Innovation",
+      title: "Mastering Bank Reconciliation: Why It Matters More Than You Think",
+      subtitle: "Financial Controls",
       handle: "Read More →",
-      location: "Discover how cloud-based accounting solutions like Xero and QuickBooks can transform your business operations. Real-time insights, automated processes, and enhanced collaboration await.",
+      location: "Bank Reconciliation is a vital internal control that ensures the accuracy of your financial statements and protects against errors and theft. Follow our step-by-step guide to reconciliation success and discover why this practice is your best defense against fraud, errors, and bad decisions.",
       borderColor: "#10B981",
       gradient: "linear-gradient(210deg, #10B981, #065f46)",
-      url: "/blog/cloud-based-accounting"
+      url: "/blog/mastering-bank-reconciliation"
     },
     {
       image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=600&fit=crop",
-      title: "Tax Planning Strategies for SMEs",
-      subtitle: "Tax Planning",
-      handle: "Read More →",
-      location: "Effective tax planning can significantly reduce your business's tax liability. Explore strategic approaches tailored for small and medium enterprises to optimize your financial position.",
-      borderColor: "#F59E0B",
-      gradient: "linear-gradient(165deg, #F59E0B, #92400e)",
-      url: "/blog/tax-planning-smes"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop",
-      title: "Bookkeeping Best Practices",
+      title: "The DNA of Your Finances: Understanding the Chart of Accounts (COA)",
       subtitle: "Accounting Fundamentals",
       handle: "Read More →",
-      location: "Master the art of accurate bookkeeping with our essential best practices guide. From proper record-keeping to reconciliation techniques, ensure your financial data is always reliable.",
-      borderColor: "#EF4444",
-      gradient: "linear-gradient(195deg, #EF4444, #991b1b)",
-      url: "/blog/bookkeeping-best-practices"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-      title: "Financial Forecasting for Growth",
-      subtitle: "Business Strategy",
-      handle: "Read More →",
-      location: "Learn how to create accurate financial forecasts that drive business growth. Understand key metrics, projection techniques, and how to use data for strategic decision-making.",
-      borderColor: "#8B5CF6",
-      gradient: "linear-gradient(225deg, #8B5CF6, #5b21b6)",
-      url: "/blog/financial-forecasting"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop",
-      title: "ERP Implementation Guide",
-      subtitle: "Systems & Integration",
-      handle: "Read More →",
-      location: "Successfully implement an ERP system in your organization with our step-by-step guide. From selection to deployment, maximize ROI and streamline your business processes.",
-      borderColor: "#06B6D4",
-      gradient: "linear-gradient(135deg, #06B6D4, #0e7490)",
-      url: "/blog/erp-implementation-guide"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?w=800&h=600&fit=crop",
-      title: "Understanding Corporate Tax in India",
-      subtitle: "Tax & Compliance",
-      handle: "Read More →",
-      location: "Get up to speed with India's Corporate Tax regime. Learn about tax rates, exemptions, registration requirements, and how to prepare your business for compliance.",
-      borderColor: "#EC4899",
-      gradient: "linear-gradient(160deg, #EC4899, #9d174d)",
-      url: "/blog/corporate-tax-india"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&h=600&fit=crop",
-      title: "AI in Accounting: The Future is Now",
-      subtitle: "Technology & Innovation",
-      handle: "Read More →",
-      location: "Explore how artificial intelligence is revolutionizing accounting practices. From automated data entry to predictive analytics, discover the tools transforming the profession.",
-      borderColor: "#14B8A6",
-      gradient: "linear-gradient(185deg, #14B8A6, #0f766e)",
-      url: "/blog/ai-in-accounting"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=600&fit=crop",
-      title: "Cash Flow Management Tips",
-      subtitle: "Financial Management",
-      handle: "Read More →",
-      location: "Master cash flow management to ensure your business stays healthy. Learn practical tips for monitoring, forecasting, and improving your company's cash position.",
-      borderColor: "#F97316",
-      gradient: "linear-gradient(220deg, #F97316, #c2410c)",
-      url: "/blog/cash-flow-management"
+      location: "The Chart of Accounts (COA) is the master directory for your entire financial system. Learn about the five main categories of the COA and discover 3 tips for designing a smart COA that serves as the foundation for accurate financial statements and data-driven business decisions.",
+      borderColor: "#F59E0B",
+      gradient: "linear-gradient(165deg, #F59E0B, #92400e)",
+      url: "/blog/understanding-chart-of-accounts"
     }
   ];
 

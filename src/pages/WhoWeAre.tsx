@@ -166,9 +166,32 @@ const WhoWeAre = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-gradient-to-br from-secondary/20 to-accent/20 h-[500px] rounded-lg flex items-center justify-center"
+              className="relative bg-gradient-to-br from-secondary/20 to-accent/20 h-[500px] rounded-lg flex items-center justify-center overflow-hidden border-2 border-border group"
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+              }}
+              style={{
+                '--mouse-x': '0px',
+                '--mouse-y': '0px',
+                '--r': '300px',
+                '--card-border': '#10b981',
+                '--card-gradient': 'linear-gradient(145deg, #10b981, #059669)'
+              } as React.CSSProperties}
             >
-              <Users className="w-40 h-40 text-secondary/60" />
+              <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
+                background: 'radial-gradient(var(--r) circle at var(--mouse-x) var(--mouse-y), var(--card-border), transparent 100%)',
+                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                WebkitMaskComposite: 'xor',
+                mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                maskComposite: 'exclude',
+                padding: '2px'
+              }}></div>
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-15 transition-opacity duration-300 mix-blend-screen" style={{
+                background: 'radial-gradient(calc(var(--r) * 0.8) circle at var(--mouse-x) var(--mouse-y), var(--card-gradient), transparent 100%)'
+              }}></div>
+              <Users className="w-40 h-40 text-secondary/60 relative z-10" />
             </motion.div>
           </div>
         </div>
@@ -183,9 +206,32 @@ const WhoWeAre = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-gradient-to-br from-primary/20 to-secondary/20 h-[400px] rounded-lg flex items-center justify-center"
+              className="relative bg-gradient-to-br from-primary/20 to-secondary/20 h-[400px] rounded-lg flex items-center justify-center overflow-hidden border-2 border-border group"
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+              }}
+              style={{
+                '--mouse-x': '0px',
+                '--mouse-y': '0px',
+                '--r': '300px',
+                '--card-border': '#3b82f6',
+                '--card-gradient': 'linear-gradient(145deg, #3b82f6, #1d4ed8)'
+              } as React.CSSProperties}
             >
-              <Shield className="w-40 h-40 text-primary/60" />
+              <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
+                background: 'radial-gradient(var(--r) circle at var(--mouse-x) var(--mouse-y), var(--card-border), transparent 100%)',
+                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                WebkitMaskComposite: 'xor',
+                mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                maskComposite: 'exclude',
+                padding: '2px'
+              }}></div>
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-15 transition-opacity duration-300 mix-blend-screen" style={{
+                background: 'radial-gradient(calc(var(--r) * 0.8) circle at var(--mouse-x) var(--mouse-y), var(--card-gradient), transparent 100%)'
+              }}></div>
+              <Shield className="w-40 h-40 text-primary/60 relative z-10" />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 40 }}
@@ -304,9 +350,32 @@ const WhoWeAre = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-gradient-to-br from-accent/20 to-primary/20 h-[500px] rounded-lg flex items-center justify-center"
+              className="relative bg-gradient-to-br from-accent/20 to-primary/20 h-[500px] rounded-lg flex items-center justify-center overflow-hidden border-2 border-border group"
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+              }}
+              style={{
+                '--mouse-x': '0px',
+                '--mouse-y': '0px',
+                '--r': '300px',
+                '--card-border': '#f59e0b',
+                '--card-gradient': 'linear-gradient(145deg, #f59e0b, #d97706)'
+              } as React.CSSProperties}
             >
-              <TrendingUp className="w-40 h-40 text-accent/60" />
+              <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
+                background: 'radial-gradient(var(--r) circle at var(--mouse-x) var(--mouse-y), var(--card-border), transparent 100%)',
+                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                WebkitMaskComposite: 'xor',
+                mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                maskComposite: 'exclude',
+                padding: '2px'
+              }}></div>
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-15 transition-opacity duration-300 mix-blend-screen" style={{
+                background: 'radial-gradient(calc(var(--r) * 0.8) circle at var(--mouse-x) var(--mouse-y), var(--card-gradient), transparent 100%)'
+              }}></div>
+              <TrendingUp className="w-40 h-40 text-accent/60 relative z-10" />
             </motion.div>
           </div>
         </div>
@@ -321,9 +390,32 @@ const WhoWeAre = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-gradient-to-br from-primary/20 to-secondary/20 h-[400px] rounded-lg flex items-center justify-center"
+              className="relative bg-gradient-to-br from-primary/20 to-secondary/20 h-[400px] rounded-lg flex items-center justify-center overflow-hidden border-2 border-border group"
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+              }}
+              style={{
+                '--mouse-x': '0px',
+                '--mouse-y': '0px',
+                '--r': '300px',
+                '--card-border': '#ec4899',
+                '--card-gradient': 'linear-gradient(145deg, #ec4899, #be185d)'
+              } as React.CSSProperties}
             >
-              <Heart className="w-40 h-40 text-primary/60" />
+              <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
+                background: 'radial-gradient(var(--r) circle at var(--mouse-x) var(--mouse-y), var(--card-border), transparent 100%)',
+                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                WebkitMaskComposite: 'xor',
+                mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                maskComposite: 'exclude',
+                padding: '2px'
+              }}></div>
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-15 transition-opacity duration-300 mix-blend-screen" style={{
+                background: 'radial-gradient(calc(var(--r) * 0.8) circle at var(--mouse-x) var(--mouse-y), var(--card-gradient), transparent 100%)'
+              }}></div>
+              <Heart className="w-40 h-40 text-primary/60 relative z-10" />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 40 }}
@@ -355,9 +447,32 @@ const WhoWeAre = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-white/10 h-[400px] rounded-lg flex items-center justify-center"
+              className="relative bg-white/10 h-[400px] rounded-lg flex items-center justify-center overflow-hidden border-2 border-white/20 group"
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+              }}
+              style={{
+                '--mouse-x': '0px',
+                '--mouse-y': '0px',
+                '--r': '300px',
+                '--card-border': '#ffffff',
+                '--card-gradient': 'linear-gradient(145deg, #ffffff, #e5e7eb)'
+              } as React.CSSProperties}
             >
-              <BarChart className="w-40 h-40 text-white/60" />
+              <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
+                background: 'radial-gradient(var(--r) circle at var(--mouse-x) var(--mouse-y), var(--card-border), transparent 100%)',
+                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                WebkitMaskComposite: 'xor',
+                mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                maskComposite: 'exclude',
+                padding: '2px'
+              }}></div>
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-15 transition-opacity duration-300 mix-blend-screen" style={{
+                background: 'radial-gradient(calc(var(--r) * 0.8) circle at var(--mouse-x) var(--mouse-y), var(--card-gradient), transparent 100%)'
+              }}></div>
+              <BarChart className="w-40 h-40 text-white/60 relative z-10" />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 40 }}

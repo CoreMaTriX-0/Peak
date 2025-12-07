@@ -63,9 +63,36 @@ const Index = () => {
               <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 opacity-90">
                 We manage the full spectrum of day-to-day accounting tasks, ensuring organized, reliable, and audit-ready books. With clean, dependable data at your fingertips, you can stay compliant, make informed decisions, and stop stressing about the paperwork—so you can focus on running your business.
               </p>
-              <Button size="lg" variant="secondary" asChild className="w-full sm:w-auto px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg">
-                <Link to="/contact">Book Appointment</Link>
-              </Button>
+              <div 
+                className="relative inline-block w-full sm:w-auto group overflow-hidden rounded-md"
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                  e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+                }}
+                style={{
+                  '--mouse-x': '0px',
+                  '--mouse-y': '0px',
+                  '--r': '200px',
+                  '--card-border': '#10b981',
+                  '--card-gradient': 'linear-gradient(145deg, #10b981, #059669)'
+                } as React.CSSProperties}
+              >
+                <div className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{
+                  background: 'radial-gradient(var(--r) circle at var(--mouse-x) var(--mouse-y), var(--card-border), transparent 100%)',
+                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                  WebkitMaskComposite: 'xor',
+                  mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                  maskComposite: 'exclude',
+                  padding: '2px'
+                }}></div>
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 mix-blend-screen pointer-events-none" style={{
+                  background: 'radial-gradient(calc(var(--r) * 0.8) circle at var(--mouse-x) var(--mouse-y), var(--card-gradient), transparent 100%)'
+                }}></div>
+                <Button size="lg" variant="secondary" asChild className="relative z-10 w-full sm:w-auto px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg">
+                  <Link to="/contact">Book Appointment</Link>
+                </Button>
+              </div>
             </div>
             
             {/* Right Side - Animated Image */}
