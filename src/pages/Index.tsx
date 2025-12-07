@@ -8,10 +8,24 @@ import VariableProximity from "@/components/ui/variable-proximity";
 import CountUp from "@/components/ui/count-up";
 import CardSwap from "@/components/ui/card-swap";
 import { ServicePillars } from "@/components/ServicePillars";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const Index = () => {
   const heroRef = useRef<HTMLElement>(null);
+  
+  useEffect(() => {
+    // Handle hash navigation when component mounts
+    const hash = window.location.hash;
+    if (hash === "#services") {
+      setTimeout(() => {
+        const element = document.getElementById("services");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+    }
+  }, []);
   
   const heroImages = [
     "https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=600&h=600&fit=crop",
@@ -42,12 +56,12 @@ const Index = () => {
                 />
               </h1>
               <p className="text-base sm:text-lg md:text-xl mb-3 sm:mb-4 opacity-90">
-                <span className="hidden sm:inline">Accurate Books | On-Time Reports | Zero Headaches<br /></span>
-                <span className="sm:hidden">Accurate Books · On-Time Reports<br />Zero Headaches<br /></span>
-                Your Reliable Finance Foundation.
+                <span className="hidden sm:inline">Accurate Records | On-Time Reports | Zero Stress<br /></span>
+                <span className="sm:hidden">Accurate Records · On-Time Reports<br />Zero Stress<br /></span>
+                Your Trusted Accounting Backbone.
               </p>
               <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 opacity-90">
-                We handle the complexity of daily financial operations, delivering clean, actionable data for compliance and decision-making. Stop worrying about the details - start acting on the facts.
+                We manage the full spectrum of day-to-day accounting tasks, ensuring organized, reliable, and audit-ready books. With clean, dependable data at your fingertips, you can stay compliant, make informed decisions, and stop stressing about the paperwork—so you can focus on running your business.
               </p>
               <Button size="lg" variant="secondary" asChild className="w-full sm:w-auto px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg">
                 <Link to="/contact">Book Appointment</Link>
@@ -73,14 +87,30 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Our Services - New Animated Version */}
+      <ServicePillars />
+
       {/* Why Work With Us */}
       <section className="py-12 sm:py-16 bg-muted">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 text-center">The Advantage: Why Choose Us Over In-House?</h2>
-          <p className="text-base sm:text-lg text-muted-foreground text-center mb-8 sm:mb-12 max-w-3xl mx-auto">
-            Choosing to outsource your core accounting is a strategic move. Choosing us guarantees higher quality, efficiency, and scalability than traditional alternatives.
-          </p>
-          <div className="overflow-x-auto mb-8 -mx-4 sm:mx-0">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 text-center">The Advantage: Why Choose Us Over In-House?</h2>
+            <p className="text-base sm:text-lg text-muted-foreground text-center mb-8 sm:mb-12 max-w-3xl mx-auto">
+              Choosing to outsource your core accounting is a strategic move. Choosing us guarantees higher accuracy, efficiency, and scalability than traditional alternatives.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="overflow-x-auto mb-8 -mx-4 sm:mx-0"
+          >
             <div className="inline-block min-w-full align-middle">
             <table className="w-full border-collapse bg-background rounded-lg overflow-hidden shadow-lg min-w-[640px]">
               <thead>
@@ -88,7 +118,7 @@ const Index = () => {
                   <th className="p-4 text-left font-semibold">Feature</th>
                   <th className="p-4 text-left font-semibold">Internal Hire</th>
                   <th className="p-4 text-left font-semibold">Generic Bookkeeper</th>
-                  <th className="p-4 text-left font-semibold bg-secondary text-secondary-foreground">Our Firm</th>
+                  <th className="p-4 text-left font-semibold bg-secondary text-secondary-foreground">GVS Consulting</th>
                 </tr>
               </thead>
               <tbody>
@@ -119,59 +149,41 @@ const Index = () => {
               </tbody>
             </table>
             </div>
-          </div>
-          <p className="text-lg sm:text-xl text-center font-medium text-foreground italic">
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-lg sm:text-xl text-center font-medium text-foreground italic"
+          >
             "We eliminate the cost and hassle of hiring, training, and managing an in-house accounting department while delivering CFO-level expertise to your books."
-          </p>
+          </motion.p>
         </div>
       </section>
-
-      {/* Our Services - New Animated Version */}
-      <ServicePillars />
 
       {/* CTA Section */}
       <section className="py-12 sm:py-16 bg-secondary text-secondary-foreground">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6">
-            Ready to Gain Financial Confidence?
-          </h2>
-          <p className="text-xl sm:text-2xl max-w-2xl mx-auto mb-4 opacity-90 font-semibold">
-            Stop Managing Books, Start Managing Growth.
-          </p>
-          <p className="text-base sm:text-lg max-w-2xl mx-auto mb-6 sm:mb-8 opacity-90">
-            Book Your Free Core Accounting Consultation. We'll discuss your current bottlenecks and design a tailored, transparent solution to streamline your entire financial operation.
-          </p>
-          <Button size="lg" variant="default" asChild className="w-full sm:w-auto">
-            <Link to="/contact">Book Free Consultation</Link>
-          </Button>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-12 sm:py-16 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center">Trusted by Growing Businesses</h2>
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
-            <Card>
-              <CardContent className="pt-6">
-                <p className="text-sm sm:text-base text-muted-foreground italic mb-4">
-                  "GVS Consulting helped us transform our financial processes. Their expertise helped us ensure regulatory compliance."
-                </p>
-                <p className="font-semibold text-sm sm:text-base">— Rajesh Kumar</p>
-                <p className="text-xs sm:text-sm text-muted-foreground">CEO, Technology Company</p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="pt-6">
-                <p className="text-sm sm:text-base text-muted-foreground italic mb-4">
-                  "Choosing GVS Consulting was the best decision for our company. Their team goes above and beyond to ensure we stay ahead with exceptional service."
-                </p>
-                <p className="font-semibold text-sm sm:text-base">— Priya Sharma</p>
-                <p className="text-xs sm:text-sm text-muted-foreground">Operations Manager, Pvt Ltd</p>
-              </CardContent>
-            </Card>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6">
+              Ready to Gain Financial Confidence?
+            </h2>
+            <p className="text-xl sm:text-2xl max-w-2xl mx-auto mb-4 opacity-90 font-semibold">
+              Stop Managing Books, Start Managing Growth.
+            </p>
+            <p className="text-base sm:text-lg max-w-2xl mx-auto mb-6 sm:mb-8 opacity-90">
+              Book Your Free Core Accounting Consultation. We'll discuss your current bottlenecks and design a tailored, transparent solution to streamline your entire financial operation.
+            </p>
+            <Button size="lg" variant="default" asChild className="w-full sm:w-auto">
+              <Link to="/contact">Book Free Consultation</Link>
+            </Button>
+          </motion.div>
         </div>
       </section>
 

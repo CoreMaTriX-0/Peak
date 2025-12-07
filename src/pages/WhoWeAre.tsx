@@ -260,15 +260,15 @@ const WhoWeAre = () => {
                 {[
                   {
                     label: "Extensive Expertise:",
-                    text: "Over 80+ years of Chartered Accounting experience led by ACCA-qualified experts."
+                    text: "A seasoned team of Chartered Accounting professionals led by ACCA-qualified specialists."
                   },
                   {
                     label: "Comprehensive Services:",
-                    text: "Full range of services including tax advisory, accounting, bookkeeping, and ERP implementation."
+                    text: "A complete suite of solutions, including tax advisory, accounting, bookkeeping, and ERP implementation."
                   },
                   {
                     label: "Proven Success:",
-                    text: "90% of clients see improved financial clarity and efficiency; 100% VAT compliance success."
+                    text: "Recognized for enhancing clients' financial clarity, streamlining operations, and ensuring strong compliance."
                   },
                   {
                     label: "Innovative Technology:",
@@ -276,11 +276,11 @@ const WhoWeAre = () => {
                   },
                   {
                     label: "Cost-Effective Solutions:",
-                    text: "Competitive rates; significant cost savings through optimized strategies."
+                    text: "Thoughtfully designed strategies that deliver value while keeping costs efficient."
                   },
                   {
                     label: "Client-Centric Approach:",
-                    text: "Personalized support with a 95% client retention rate, reflecting strong partnerships."
+                    text: "Dedicated, personalized support that fosters long-term, trusted partnerships."
                   }
                 ].map((item, index) => (
                   <motion.div
@@ -312,7 +312,7 @@ const WhoWeAre = () => {
         </div>
       </section>
 
-      {/* GVS Consulting Difference - Image Left, Text Right */}
+      {/* You, our valued client - Image Left, Text Right */}
       <section className="py-16 bg-muted">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -321,51 +321,12 @@ const WhoWeAre = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-gradient-to-br from-secondary/20 to-accent/20 h-[400px] rounded-lg flex items-center justify-center"
+              className="bg-gradient-to-br from-primary/20 to-secondary/20 h-[400px] rounded-lg flex items-center justify-center"
             >
-              <Target className="w-40 h-40 text-secondary/60" />
+              <Heart className="w-40 h-40 text-primary/60" />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl font-bold mb-6">There are many reasons to choose GVS CONSULTING:</h2>
-              <ul className="space-y-4">
-                {[
-                  "We deliver exceptional client service and sound, strategic solutions.",
-                  "Our directors have a long history of providing clarity, knowledge and innovation to businesses of all sizes.",
-                  "As a progressive firm, we are constantly adapting to the changing business environment.",
-                  "We practice what we preach. We are a paperless office operating fully in the cloud."
-                ].map((text, index) => (
-                  <motion.li
-                    key={index}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
-                    className="flex items-start gap-3"
-                  >
-                    <CheckCircle className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
-                    <span className="text-muted-foreground">{text}</span>
-                  </motion.li>
-                ))}
-              </ul>
-              <Button size="lg" className="mt-6" asChild>
-                <Link to="/contact">Contact Us</Link>
-              </Button>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* You, our valued client - Text Left, Image Right */}
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
@@ -380,15 +341,6 @@ const WhoWeAre = () => {
               <Button size="lg" asChild>
                 <Link to="/contact">Contact Us</Link>
               </Button>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="bg-gradient-to-br from-primary/20 to-secondary/20 h-[400px] rounded-lg flex items-center justify-center"
-            >
-              <Heart className="w-40 h-40 text-primary/60" />
             </motion.div>
           </div>
         </div>
@@ -445,7 +397,7 @@ const WhoWeAre = () => {
       </section>
 
       {/* The GVS Consulting Experience */}
-      <section className="py-16 bg-primary text-primary-foreground">
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -456,101 +408,10 @@ const WhoWeAre = () => {
             <h2 className="text-4xl font-bold mb-6">
               The GVS CONSULTING Experience is more than rhetoric: it's our guarantee of exceptional service
             </h2>
-            <p className="text-lg max-w-4xl mx-auto opacity-90">
+            <p className="text-lg max-w-4xl mx-auto text-muted-foreground">
               All GVS Consulting staff is committed to the GVS Consulting Experience. We ensure there is a clear understanding with our clients about the work we will perform, the support we require of our clients to enable us to perform effectively, and our pricing and delivery dates. We strive to thoroughly understand our client's businesses and goals to help them achieve their goals and objectives.
             </p>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Testimonials - Card Swipe */}
-      <section className="py-16 bg-muted">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-12"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">What Our Indian Clients Say</h2>
-            <p className="text-center text-muted-foreground text-sm sm:text-base">Real feedback from our valued clients</p>
-          </motion.div>
-
-          <div className="relative max-w-4xl mx-auto">
-            {/* Testimonial Cards with Side Navigation */}
-            <div className="relative h-[300px] sm:h-[280px] md:h-[260px] flex items-center">
-              {/* Previous Button */}
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={handlePrevious}
-                className="absolute left-0 sm:-left-16 z-10 rounded-full shadow-lg hover:shadow-xl transition-all"
-                aria-label="Previous testimonial"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </Button>
-
-              {/* Card Container */}
-              <div className="flex-1 px-12 sm:px-4">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={currentTestimonial}
-                    initial={{ opacity: 0, x: 100, rotateY: 10 }}
-                    animate={{ opacity: 1, x: 0, rotateY: 0 }}
-                    exit={{ opacity: 0, x: -100, rotateY: -10 }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                  >
-                    <Card className="shadow-lg hover:shadow-xl transition-shadow">
-                      <CardContent className="pt-6 sm:pt-8 p-6 sm:p-8 flex flex-col justify-between h-full min-h-[280px]">
-                        <div>
-                          <div className="flex gap-1 mb-4 justify-center">
-                            {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                              <Star key={i} className="w-5 h-5 sm:w-6 sm:h-6 fill-amber-400 text-amber-400" />
-                            ))}
-                          </div>
-                          <p className="text-muted-foreground italic mb-6 text-center text-base sm:text-lg leading-relaxed">
-                            "{testimonials[currentTestimonial].text}"
-                          </p>
-                        </div>
-                        <div className="border-t pt-4 text-center">
-                          <p className="font-semibold text-base sm:text-lg">{testimonials[currentTestimonial].author}</p>
-                          <p className="text-sm sm:text-base text-muted-foreground">{testimonials[currentTestimonial].position}</p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
-              {/* Next Button */}
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={handleNext}
-                className="absolute right-0 sm:-right-16 z-10 rounded-full shadow-lg hover:shadow-xl transition-all"
-                aria-label="Next testimonial"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </Button>
-            </div>
-
-            {/* Dots Indicator */}
-            <div className="flex justify-center gap-2 mt-8">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleDotClick(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    index === currentTestimonial
-                      ? "bg-secondary w-8"
-                      : "bg-secondary/30 hover:bg-secondary/50"
-                  }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
